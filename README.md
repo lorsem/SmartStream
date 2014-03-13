@@ -6,8 +6,8 @@ Everything to setup a Streaming Server and WebInterface
 
 
 Stub diagram: 
-'''
-                                    +
+
+\                                   +
      +-----------------+            |
      |                 |            |
      |                 |--> Ethernet|-> Web Interface -> Functions available:
@@ -22,4 +22,4 @@ Stub diagram:
                                     |                 |
                                     |                 +--> Button to force the creation of an index
 +-----------------------------------+
-'''
+
