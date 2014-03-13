@@ -19,7 +19,8 @@
             width : 90%;
             margin : 5%;
             float : left;
-
+            overflow : scroll;
+            height : 80%;
         }
         p {
             color : white;
@@ -28,6 +29,8 @@
     </style>
     <script language="javascript">
 function print_contnent(lista) {
+    for (i=0; i<100;i++)
+        document.write("<p>"+ i + "</p>");
     for(i=0; i<lista.length;i++){
             document.write("<p>" + lista[i] + "</p>");
     }
