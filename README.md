@@ -7,7 +7,7 @@ Everything to setup a Streaming Server and WebInterface
 
 Stub diagram: 
 
-\                                   +
+                                    +
      +-----------------+            |
      |                 |            |
      |                 |--> Ethernet|-> Web Interface -> Functions available:
