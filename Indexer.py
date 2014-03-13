@@ -8,11 +8,10 @@ def isMovie(filename):
 
 def get_filepaths(directory):
     """
-    This function will generate the file names in a directory 
-    tree by walking the tree either top-down or bottom-up. For each 
-    directory in the tree rooted at directory top (including top itself), 
-    it yields a 3-tuple (dirpath, dirnames, filenames).
-    Movie files will be selected and listed.
+    os.walk() is awesome. Nothing more to say...
+    The tupla returned gets unpaked, files contains filenames while root contains the filepath from passed
+    argument to dile diretctory.
+    Movies are selected and listed with their full filepaht (e.g. directory/subDirectory/movie.extension)
     """
     file_paths = []  # List which will store all of the full filepaths (filename and extension included)
 
