@@ -9,7 +9,7 @@ def isMovie(filename):
 def get_filepaths(directory):
     """
     os.walk() is awesome. Nothing more to say...
-    The tupla returned gets unpaked, files contains filenames while root contains the filepath from passed
+    The tuple returned gets unpacked, files contains filenames while root contains the filepath from passed
     argument to dile diretctory.
     Movies are selected and listed with their full filepaht (e.g. directory/subDirectory/movie.extension)
     """
