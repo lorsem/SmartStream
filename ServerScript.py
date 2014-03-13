@@ -2,8 +2,9 @@
 import cgi
 import cgitb
 import os
+import ListTheVideos
 cgitb.enable()
-
+import os
 
 def isMovie(filename):
     videoExtensions = ('.wmv', '.mov', '.mpg', '.avi', '.mp4', '.mkv', 'm4v', '.flv')
@@ -32,6 +33,9 @@ def get_filepaths(directory):
 
 
 
+
+
+
 # Retrieve form fields
 form   = cgi.FieldStorage()			# Get POST data
 TheDirectory  = form.getfirst("TheDirectory")			# Pull fname field data
@@ -44,7 +48,7 @@ pos = 0
 while True:
     try:
         Index.write(DirList[pos])
-        Index.write('\n') NEEDED!
+        Index.write('\n') #NEEDED!
     except IndexError:
         break
     pos += 1
