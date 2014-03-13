@@ -6,7 +6,7 @@ Everything to setup a Streaming Server and WebInterface
 
 
 Stub diagram: 
-
+'''
                                     +
      +-----------------+            |
      |                 |            |
@@ -22,3 +22,4 @@ Stub diagram:
                                     |                 |
                                     |                 +--> Button to force the creation of an index
 +-----------------------------------+
+'''
