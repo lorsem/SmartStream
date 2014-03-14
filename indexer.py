@@ -49,6 +49,8 @@ def printIndex(index):
     sortedKeys = sorted(index.keys())  # A list of sorted keys
     with open('/var/www/video_index.txt', 'w') as f:
         for key in sortedKeys:
+            if type(index[key]) is dict:
+                total += printIndex(index[key])
             total += 1
             f.write('{} {}\n'.format(key, index[key]))
                 # Python converts \n to os.linesep
