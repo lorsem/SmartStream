@@ -51,7 +51,8 @@ def printIndex(index):
         for key in sortedKeys:
             if type(index[key]) is dict:
                 total += printIndex(index[key])
-            total += 1
+            else:
+                total += 1
             f.write('{} {}\n'.format(key, index[key]))
                 # Python converts \n to os.linesep
         #f.close() # Just in case... Shouldn't be.. ??
