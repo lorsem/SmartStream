@@ -13,22 +13,29 @@ def isMovie(filename):
 def getIndex(scanDir, refDir):
     """
     os.walk() is awesome. Nothing more to say...
-    The tupla returned gets unpaked, files contains filenames while root contains the filepath from passed
-    argument to dile diretctory.
-    It returns a dictionary, key = file name without extension, value = full file path with extension, relative to refDir
+    The tuple returned gets unpaked, files contains filenames while root contains the absolute filepath from passed
+    argument to the file's diretctory.
+    The Function returns a dictionary, key = file name without extension, value = full file path with extension, relative to refDir
     """
     index = {}
 
     # Walk the tree.
     for root, directories, files in os.walk(scanDir):
         for filename in files:
-            name = isMovie(filename) # False if not a movie
+            name = isMovie(filename) # False if not a movie, else movie-name
             if  name:    
                 # Join the two strings in order to form the full filepath.
                 filepath = os.path.join(root, filename)
+                # Get relative path of file
                 relFilePath = os.path.relpath(filepath, refDir) # relpath returns releative path of first argument
-                index[name] = relFilePath  # Adds new item to dictionary
-
+                index[name] = relFilePath  # Adds new item to dictionary: key = movie-name, value = movie's relative path
     return index  
+
+def printIndex(index):
+    with open('./index.txt', 'w') as f:
+        for name, path in index.iteritems():
+            f.write('{} {}\n'.format(name, path))
+
+
 
 
