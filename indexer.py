@@ -10,23 +10,23 @@ def isMovie(filename):
         return os.path.splitext(filename)[0] # splitext return a list: [name, extension] 
     else: return False
 
-def getIndex(directory):
+def getIndex(scanDir, refDir):
     """
     os.walk() is awesome. Nothing more to say...
     The tupla returned gets unpaked, files contains filenames while root contains the filepath from passed
     argument to dile diretctory.
-    It returns a dictionary, key = file name without extension, value = full file path with extension
+    It returns a dictionary, key = file name without extension, value = full file path with extension, relative to refDir
     """
     index = {}
 
     # Walk the tree.
-    for root, directories, files in os.walk(directory):
+    for root, directories, files in os.walk(scanDir):
         for filename in files:
             name = isMovie(filename) # False if not a movie
             if  name:    
                 # Join the two strings in order to form the full filepath.
                 filepath = os.path.join(root, filename)
-                relFilePath = os.path.relpath(filepath, directory) # relpath returns releative path of first argument
+                relFilePath = os.path.relpath(filepath, refDir) # relpath returns releative path of first argument
                 index[name] = relFilePath  # Adds new item to dictionary
 
     return index  
