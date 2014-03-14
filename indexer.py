@@ -40,6 +40,8 @@ full file path with extension, relative to refDir
                     #key = movie-name, value = movie's relative path
         for directory in directories:
             index[directory] = getIndex(os.path.join(root, directory), refDir)
+            if not index[directory]:
+                index.pop[directory]
         break
     return index
 
