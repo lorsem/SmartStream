@@ -13,9 +13,9 @@ def isMovie(filename):
 def getIndex(scanDir, refDir):
     """
     os.walk() is awesome. Nothing more to say...
-    The tuple returned gets unpaked, files contains filenames while root contains the absolute filepath from passed
-    argument to the file's diretctory.
-    The Function returns a dictionary, key = file name without extension, value = full file path with extension, relative to refDir
+    The tuple returned gets unpacked, 'files' contains filenames while 'root' contains the absolute filepath from passed
+    argument to the file's directory.
+    The Function returns a dictionary where: key = filename without extension, value = file path with extension, relative to refDir.
     """
     index = {}
 
@@ -34,8 +34,8 @@ def printIndex(index):
     sortedKeys = sorted(index.keys()) # A list of sorted keys
     with open('./index.txt', 'w') as f:
         for key in sortedKeys:
-            f.write('{} {}\n'.format(key, index[key]) # Python converts \n to os.linesep
-    f.close() # Just in case...
+            f.write('{0} {1}\n'.format(key, index[key]) # Python converts \n to os.linesep
+#    f.close() # Just in case... Shouldn't be.. ?? 
 
 
 
