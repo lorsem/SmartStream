@@ -38,6 +38,9 @@ full file path with extension, relative to refDir
                 index[name] = os.path.relpath(filepath, refDir)
                 # Adds new item to dictionary:
                     #key = movie-name, value = movie's relative path
+        for directory in directories:
+            index[directory] = getIndex(os.path.join(root, directory), refDir)
+        break
     return index
 
 
@@ -46,7 +49,7 @@ def printIndex(index):
     sortedKeys = sorted(index.keys())  # A list of sorted keys
     with open('/var/www/video_index.txt', 'w') as f:
         for key in sortedKeys:
-            total +=1
+            total += 1
             f.write('{} {}\n'.format(key, index[key]))
                 # Python converts \n to os.linesep
         #f.close() # Just in case... Shouldn't be.. ??
