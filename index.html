@@ -1,7 +1,6 @@
 
 <html>
 <head>
-<head>
 <style type="text/css">
         html, body {
             /* height: auto; */
@@ -64,9 +63,9 @@
     <script language="javascript">
 function print_contnent(lista) {
     for (i=0; i<100;i++)
-        document.write("<p>"+ i + "</p>");
+        document.write("<p> &nbsp;"+ i + "<//p>");
     for(i=0; i<lista.length;i++){
-            document.write("<p>" + lista[i] + "</p>");
+            document.write("<p> &nbsp;" + lista[i] + "<//p>");
     }
 }
 
@@ -80,20 +79,19 @@ function print_contnent(lista) {
 
         </div>
     </div>
-    <div id="body">
-        <div id="list">
-            <script>
-                var test_list = new Array( "ciao", "hello", "hallo" );
-                print_contnent(test_list);
-            </script>
+        <div id="body">
+            <div id="list">
+                <script>
+                    var test_list = new Array( "ciao", "hello", "hallo" );
+                    print_contnent(test_list);
+                </script>
+            </div>
+            <div id="menu">
+                <script>
+                    print_contnent(test_list);
+                </script>
+            </div>
         </div>
-        <div id="menu">
-            <script>
-                print_contnent(test_list);
-            </script>
-        </div>
-       </div>
-    </div>
     <div id="footer">
         test
     </div>
