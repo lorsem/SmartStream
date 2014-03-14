@@ -42,9 +42,12 @@ full file path with extension, relative to refDir
 
 
 def printIndex(index):
+    total = 0
     sortedKeys = sorted(index.keys())  # A list of sorted keys
-    with open('./index.txt', 'w') as f:
+    with open('/var/www/index.txt', 'w') as f:
         for key in sortedKeys:
+            total +=1
             f.write('{} {}\n'.format(key, index[key]))
                 # Python converts \n to os.linesep
         #f.close() # Just in case... Shouldn't be.. ??
+    return total
