@@ -12,7 +12,7 @@ import indexer
 form   = cgi.FieldStorage()			# Get POST data
 scanDir  = form.getfirst("scanDir")			# Pull fname field data
 Index = open('/var/www/list_of_films.txt', 'w')
-if scanDir.lower() == 'default':
+if scanDir == None:
     scanDir = '/media/HDD'
 refDir = '/var/www'
 DirList = indexer.getIndex(scanDir, refDir)
