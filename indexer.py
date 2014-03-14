@@ -13,7 +13,7 @@ def isMovie(filename):
 def getIndex(directory):
     """
     os.walk() is awesome. Nothing more to say...
-    The tuple returned gets unpacked, files contains filenames while root contains the filepath from passed
+    The tupla returned gets unpaked, files contains filenames while root contains the filepath from passed
     argument to dile diretctory.
     It returns a dictionary, key = file name without extension, value = full file path with extension
     """
@@ -30,6 +30,5 @@ def getIndex(directory):
                 index[name] = relFilePath  # Adds new item to dictionary
 
     return index  
-
 
 
