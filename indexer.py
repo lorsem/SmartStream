@@ -31,7 +31,7 @@ def getIndex(scanDir, refDir):
     return index  
 
 def printIndex(index):
-    sortedKeys = sorted(index) # A list of sorted keys
+    sortedKeys = sorted(index.keys()) # A list of sorted keys
     with open('./index.txt', 'w') as f:
         for key in sortedKeys:
             f.write('{} {}\n'.format(key, index[key]) # Python converts \n to os.linesep
