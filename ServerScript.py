@@ -10,12 +10,12 @@ import indexer
 
 # Retrieve form fields
 form   = cgi.FieldStorage()			# Get POST data
-TheDirectory  = form.getfirst("TheDirectory")			# Pull fname field data
+scanDir  = form.getfirst("scanDir")			# Pull fname field data
 Index = open('/var/www/list_of_films.txt', 'w')
-if TheDirectory.lower() == 'default':
-    TheDirectory = '/media/HDD'
-
-DirList = indexer.getIndex(TheDirectory)
+if scanDir.lower() == 'default':
+    scanDir = '/media/HDD'
+refDir = '/var/www'
+DirList = indexer.getIndex(scanDir, refDir)
 pos = 0
 while True:
     try:
@@ -39,6 +39,6 @@ Searched <b>{1}</b>
 <a href="http://192.168.1.150/index.html"><b>HOME</b></a>
 </body>
 </html>
-'''.format(str(pos), TheDirectory)
+'''.format(str(pos), scanDir)
 
 

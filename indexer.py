@@ -18,7 +18,7 @@ If it is a movie it returns the filename without the extension
 def getIndex(scanDir, refDir):
     """
 os.walk() is awesome. Nothing more to say...
-The tuple returned gets unpaked, files contains filenames while root contains
+The tuple returned gets unpacked, files contains filenames while root contains
 the absolute filepath from passed argument to the file's diretctory.
 The Function returns a dictionary, key = file name without extension, value = \
 full file path with extension, relative to refDir
