@@ -1,32 +1,64 @@
+
 <html>
 <head>
-    <style type="text/css">
+<head>
+<style type="text/css">
+        html, body {
+            /* height: auto; */
+            /* width : auto; */
+            /* background-color: red; */
+        }
         #wrap {
-            width : 100%;
+            width : auto;
             height : 100%;
-            padding : 0% 5%;
+            margin: 0 auto;
+            max-width: 1280px; 
+            /* max-height : 820px; */
+            /* padding : 3%; */
+            /* background-color: grey; */
+        }
+        
+        #header {
+            width : auto;
+            height : 20%;
+            /* padding:auto; */
+            display: table-cell;
+            vertical-align:center;
         }
         #body {
-            background-color:black;
-            width : 90%;
-            height : 70%;
-        }
-        #header {
-            font-size : 30px;
-            padding : 0px, 5%, 0px, 0px;
-            width : 90%;
-            height : 15%;
+            width : auto;
+            height : 75%;
         }
         #list {
-            width : 90%;
-            margin : 5%;
-            float : left;
-            overflow : scroll;
-            height : 80%;
+            width : 75%;
+            height:inherit;
+            /* height : 100%; */
+            overflow-y: scroll;
+            overflow-x: hidden;
+            background-color:black;
+            float: left;
         }
-        p {
+        #title {
+            font-family : helvetica;
+            font-size: 40px;
+            padding : auto ;
+        }
+        #body p {
             color : white;
             font : helvetica; 
+        }
+        #menu {
+            width: 20%;
+            height:inherit;
+            /* height: 100%; */
+            float: right;
+            background-color:black;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        #footer{
+            height:5%;
+            background:red;
         }
     </style>
     <script language="javascript">
@@ -43,7 +75,7 @@ function print_contnent(lista) {
 <body>
 <div id="wrap"> 
     <div id="header">
-        SMARTSTREAM
+        <h3 id="title">SMARTSTREAM</h3>
         <div id="logo">
 
         </div>
@@ -51,10 +83,19 @@ function print_contnent(lista) {
     <div id="body">
         <div id="list">
             <script>
-                var lista = new Array( "ciao", "hello", "hallo" );
-                print_contnent(lista);
+                var test_list = new Array( "ciao", "hello", "hallo" );
+                print_contnent(test_list);
             </script>
         </div>
+        <div id="menu">
+            <script>
+                print_contnent(test_list);
+            </script>
+        </div>
+       </div>
+    </div>
+    <div id="footer">
+        test
     </div>
 </div>
 </body>
