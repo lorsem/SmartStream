@@ -26,16 +26,16 @@ def getIndex(scanDir, refDir):
             if  name:    
                 # Join the two strings in order to form the full filepath.
                 filepath = os.path.join(root, filename)
-                # Get relative path of file
-                relFilePath = os.path.relpath(filepath, refDir) # relpath returns releative path of first argument
-                index[name] = relFilePath  # Adds new item to dictionary: key = movie-name, value = movie's relative path
+                # Get relative path of file and add it to dictionary. Relpath returns relative path of first argument based on second argument
+                index[name] =  os.path.relpath(filepath, refDir) # Adds new item to dictionary: key = movie-name, value = movie's relative path
     return index  
 
 def printIndex(index):
+    sortedKeys = sorted(index) # A list of sorted keys
     with open('./index.txt', 'w') as f:
-        for name, path in index.iteritems():
-            f.write('{} {}\n'.format(name, path))
-
+        for key in sortedKeys:
+            f.write('{} {}\n'.format(key, index[key]) # Python converts \n to os.linesep
+    f.close() # Just in case...
 
 
 
