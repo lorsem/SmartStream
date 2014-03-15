@@ -47,7 +47,7 @@ full file path with extension, relative to refDir
         for directory in directories:
             index[directory] = getIndex(os.path.join(root, directory), refDir)
             if not index[directory]:
-                index.pop[directory]
+                index.pop(directory)
         break
     return index
 
