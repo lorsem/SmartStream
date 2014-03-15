@@ -53,9 +53,11 @@ full file path with extension, relative to refDir
 
 
 def printIndex(index):
+    cwd = os.getcwd()
+    textPath = os.path.join(cwd, 'video_index.txt')
     total = 0
     sortedKeys = sorted(index.keys())  # A list of sorted keys
-    with open('/var/www/video_index.txt', 'w') as f:
+    with open(textPath, 'w') as f:
         for key in sortedKeys:
             if type(index[key]) is dict:
                 total += printIndex(index[key])
