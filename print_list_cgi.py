@@ -1,4 +1,20 @@
+#!/usr/bin/env python
+import cgi
+import cgitb
+cgitb.enable()
+import pickle
 
+
+def load_index(file_name="index.pkl"):
+    with open(file_name, "rb") as index_file:
+        index = pickle.load(index_file)
+    return index
+
+index = load_index()
+
+print "Content-Type: text/html\n"
+
+print '''\
 <html>
 <head>
 <style type="text/css">
@@ -11,12 +27,11 @@
             width : auto;
             height : 100%;
             margin: 0 auto;
-            max-width: 1280px; 
+            max-width: 1280px;
             /* max-height : 820px; */
             /* padding : 3%; */
             /* background-color: grey; */
         }
-        
         #header {
             width : auto;
             height : 20%;
@@ -44,8 +59,7 @@
         }
         #body p {
             color : white;
-            font : helvetica; 
-            text-indent : 20px;
+            font : helvetica;
         }
         #menu {
             width: 20%;
@@ -60,36 +74,36 @@
             height:auto;
         }
     </style>
-    <script language="javascript">
-function print_contnent(lista) {
-    for (i=0; i<100;i++)
-        document.write("<p>"+ i + "</p>");
-    for(i=0; i<lista.length;i++){
-            document.write("<p> &nbsp;" + lista[i] + "</p>");
-    }
-}
-
+    
     </script>
 </head>
 <body>
-<div id="wrap"> 
+<div id="wrap">
     <div id="header">
         <h3 id="title">SMARTSTREAM</h3>
         <div id="logo">
-
         </div>
     </div>
         <div id="body">
             <div id="list">
-                <script>
-                    var test_list = new Array( "ciao", "hello", "hallo" );
-                    print_contnent(test_list);
-                </script>
+'''
+
+for key, val in iter(sorted(index.iteritems())):
+    print '''\
+<a href="{}"><p>{}</p></a>\
+'''.format(val, key)
+
+print '''\
             </div>
             <div id="menu">
-                <script>
-                    print_contnent(test_list);
-                </script>
+'''
+
+for key, val in iter(sorted(index.iteritems())):
+    print '''\
+<a href="{}"><p>{}</p></a>\
+'''.format(val, key)
+
+print '''\
             </div>
         </div>
     <div id="footer">
@@ -97,5 +111,5 @@ function print_contnent(lista) {
     </div>
 </div>
 </body>
-
-</html>
+</html>\
+'''
