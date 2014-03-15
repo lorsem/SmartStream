@@ -3,7 +3,6 @@ import cgi
 import cgitb
 cgitb.enable()
 import indexer
-import print_list
 # Retrieve form fields
 form = cgi.FieldStorage()			# Get POST data
 scanDir = form.getfirst("scanDir")			# Pull fname field data
@@ -32,4 +31,4 @@ Searched <b>{1}</b>
 {2}
 </body>
 </html>
-'''.format(str(total), scanDir, TheIndex)
+'''.format(str(total), scanDir, 'NULL') #TheIndex
