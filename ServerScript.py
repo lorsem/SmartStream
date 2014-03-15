@@ -3,7 +3,7 @@ import cgi
 import cgitb
 cgitb.enable()
 import indexer
-
+import print_list
 # Retrieve form fields
 form = cgi.FieldStorage()			# Get POST data
 scanDir = form.getfirst("scanDir")			# Pull fname field data
@@ -26,7 +26,9 @@ Found <b>{0}</b> films!
 Searched <b>{1}</b>
 <br>
 <a href="http://192.168.1.150/index.html"><b>HOME</b></a>
-<br><br>
+<br>
+<a href="http://192.168.1.150/cgi-bin/print_list.py"><b>The index (Philippe)</b></a>
+<br>
 {2}
 </body>
 </html>
