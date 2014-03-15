@@ -88,7 +88,7 @@ print '''\
             <div id="list">
 '''
 
-for key, val in index.iteritems:
+for key, val in iter(sorted(index.iteritems())):
     print '''\
 <a href="{}"><p>{}</p></a>\
 '''.format(val, key)
@@ -98,7 +98,7 @@ print '''\
             <div id="menu">
 '''
 
-for key, val in index.iteritems:
+for key, val in iter(sorted(index.iteritems())):
     print '''\
 <a href="{}"><p>{}</p></a>\
 '''.format(val, key)

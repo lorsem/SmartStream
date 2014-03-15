@@ -11,8 +11,9 @@ Index = open('/var/www/list_of_films.txt', 'w')
 if scanDir is None:
     scanDir = '/var/www'
 refDir = '/var/www'
-TheDir = indexer.getIndex(scanDir, refDir)
-total = indexer.printIndex(TheDir)
+TheIndex = indexer.getIndex(scanDir, refDir)
+total = indexer.printIndex(TheIndex)
+indexer.store_index(TheIndex)
 #output on the page of the script
 print "Content-Type: text/html; charset=UTF-8"
 print ''
@@ -29,4 +30,4 @@ Searched <b>{1}</b>
 {2}
 </body>
 </html>
-'''.format(str(total), scanDir, TheDir)
+'''.format(str(total), scanDir, TheIndex)
