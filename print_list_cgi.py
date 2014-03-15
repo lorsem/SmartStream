@@ -74,7 +74,7 @@ print '''\
             height:auto;
         }
     </style>
-}
+    
     </script>
 </head>
 <body>
