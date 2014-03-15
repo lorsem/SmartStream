@@ -1,18 +1,14 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 import cgi
 import cgitb
-import os
 cgitb.enable()
-import os
 import indexer
 
-
-
 # Retrieve form fields
-form   = cgi.FieldStorage()			# Get POST data
-scanDir  = form.getfirst("scanDir")			# Pull fname field data
+form = cgi.FieldStorage()			# Get POST data
+scanDir = form.getfirst("scanDir")			# Pull fname field data
 Index = open('/var/www/list_of_films.txt', 'w')
-if scanDir == None:
+if scanDir is None:
     scanDir = '/var/www'
 refDir = '/var/www'
 TheDir = indexer.getIndex(scanDir, refDir)
@@ -21,7 +17,6 @@ total = indexer.printIndex(TheDir)
 print "Content-Type: text/html; charset=UTF-8"
 print ''
 print '''
-
 <html>
 <body>
 Indexing completed! <br>
@@ -34,6 +29,4 @@ Searched <b>{1}</b>
 {2}
 </body>
 </html>
-'''.format(str(total), scanDir, TheDir )
-
-
+'''.format(str(total), scanDir, TheDir)

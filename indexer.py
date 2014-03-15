@@ -1,4 +1,5 @@
 import os
+import pickle
 
 
 def isMovie(filename):
@@ -13,6 +14,11 @@ If it is a movie it returns the filename without the extension
             # splitext return a list: [name, extension]
     else:
         return False
+
+
+def store_index(index):
+    with open("index.pkl", "wb") as output:
+        pickle.dump(index, output)
 
 
 def getIndex(scanDir, refDir):
