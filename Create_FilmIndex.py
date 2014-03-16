@@ -60,7 +60,7 @@ IndexHtml.write(
     <h4>Available Movies</h4>
 
 <a href="javascript:ddtreemenu.flatten('treemenu1', 'expand')">Expand All</a> |
-<a href="javascript:ddtreemenu.flatten('treemenu1', 'contact')">Contact All</a>
+<a href="javascript:ddtreemenu.flatten('treemenu1', 'contact')">Contract All</a>
 
 <ul id="treemenu1" class="treeview">
 
