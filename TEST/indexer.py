@@ -9,16 +9,18 @@ If it is a movie it returns the filename without the extension
     """
     videoExtensions = ('.wmv', '.mov', '.mpg', '.avi', '.mp4', '.mkv', 'm4v',
                        '.flv')  # Tuple containing supported video extensions
-    if filename.endswith(videoExtensions):
-        return os.path.splitext(filename)[0]
-            # splitext return a list: [name, extension]
+    name, ext = os.path.splitext(filename)
+    if ext in videoExtensions:
+        return name
     else:
         return False
 
-
 def store_index(index):
-    with open("index.pkl", "wb") as output:
-        pickle.dump(index, output)
+    try:
+        with open("index.pkl", "wb") as output:
+            pickle.dump(index, output)
+    except IOError:
+        return False, "No such file"
 
 
 def getIndex(scanDir, refDir):
@@ -28,27 +30,24 @@ The tuple returned gets unpacked, files contains filenames while root contains
 the absolute filepath from passed argument to the file's diretctory.
 The Function returns a dictionary, key = file name without extension, value = \
 full file path with extension, relative to refDir
+
+DIR LISTING:
+    os.dirlist(d) retruns a list of what is in d. Just names. Since we need to know what is a directory and what is not we call os.path.isdir(d)
+    wher d MUST b a path, not just a name of a directory.
+    dirDict is a dictionary: key = name, value = abs path
+    dirList contains dirDict keys, therefore it is a list of all the elements in the scanned directory. It is what os.dirlist would have returned.
     """
     index = {}
-
-    # Walk the tree.
-    for root, directories, files in os.walk(scanDir):
-        for filename in files:
-            name = isMovie(filename)  # False if not a movie, else movie-name
-            if name:
-                # Join the two strings in order to form the full filepath.
-                filepath = os.path.join(root, filename)
-                # Get relative path of file and add it to dictionary.
-                # Relpath returns relative path of first argument based
-                    #on second argument
-                index[name] = os.path.relpath(filepath, refDir)
-                # Adds new item to dictionary:
-                    #key = movie-name, value = movie's relative path
-        for directory in directories:
-            index[directory] = getIndex(os.path.join(root, directory), refDir)
-            if not index[directory]:
-                index.pop(directory)
-        break
+    dirDict = {key : os.path.join(scanDir, key) for key in os.listdir(scanDir)}
+    dirList = dirDict.keys()
+    for elem in sorted(dirList):
+        name = isMovie(elem)
+        if name:
+            index[name] = os.path.relpath(dirDict[elem], refDir)
+        elif os.path.isdir(dirDict[elem]):
+            tempIndex = getIndex(dirDict[elem], refDir)
+            if tempIndex != {}:
+                index[elem] = tempIndex
     return index
 
 
@@ -64,6 +63,4 @@ def printIndex(index):
             else:
                 total += 1
             f.write('{} {}\n'.format(key, index[key]))
-                # Python converts \n to os.linesep
-        #f.close() # Just in case... Shouldn't be.. ??
     return total

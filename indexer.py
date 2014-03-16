@@ -30,20 +30,24 @@ The tuple returned gets unpacked, files contains filenames while root contains
 the absolute filepath from passed argument to the file's diretctory.
 The Function returns a dictionary, key = file name without extension, value = \
 full file path with extension, relative to refDir
+
+DIR LISTING:
+    os.dirlist(d) retruns a list of what is in d. Just names. Since we need to know what is a directory and what is not we call os.path.isdir(d)
+    wher d MUST b a path, not just a name of a directory.
+    dirDict is a dictionary: key = name, value = abs path
+    dirList contains dirDict keys, therefore it is a list of all the elements in the scanned directory. It is what os.dirlist would have returned.
     """
     index = {}
-    for file in sorted(os.listdir(scanDir)):
-        if os.path.isdir(file):
-            with getIndex(os.path.relpath(file, scanDir), refDir) as dir:
-                if dir != {}:
-                    index[file] = dir
-        elif isMovie(file):
-                index[file] = os.path.relpath(file, refDir)
-                # Get relative path of file and add it to dictionary.
-                # Relpath returns relative path of first argument based
-                    #on second argument
-                # Adds new item to dictionary:
-                    #key = movie-name, value = movie's relative path
+    dirDict = {key : os.path.join(scanDir, key) for key in os.listdir(scanDir)}
+    dirList = dirDict.keys()
+    for elem in sorted(dirList):
+        name = isMovie(elem)
+        if name:
+            index[name] = os.path.relpath(dirDict[elem], refDir)
+        elif os.path.isdir(dirDict[elem]):
+            tempIndex = getIndex(dirDict[elem], refDir)
+            if tempIndex != {}:
+                index[elem] = tempIndex
     return index
 
 
