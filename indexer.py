@@ -21,7 +21,7 @@ def store_index(index):
         with open("index.pkl", "wb") as output:
             pickle.dump(index, output)
     except IOError:
-        return "No such file"
+        return False, "No such file"
 
 
 def getIndex(scanDir, refDir):
@@ -33,12 +33,11 @@ The Function returns a dictionary, key = file name without extension, value = \
 full file path with extension, relative to refDir
     """
     index = {}
-    # Walk the tree.
     for file in os.list(scanDir).sort():
         if os.path.isdir(file):
-            index[file] = getIndex(os.path.relpath(file, scanDir), refDir)
-            if not index[file]:
-                index.pop(file)
+            with getIndex(os.path.relpath(file, scanDir), refDir) as dir:
+                if dir is not []:
+                    index[file] = dir
         elif isMovie(file):
                 index[file] = os.path.relpath(file, refDir)
                 # Get relative path of file and add it to dictionary.
