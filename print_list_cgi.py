@@ -6,8 +6,13 @@ import pickle
 
 
 def load_index(file_name="index.pkl"):
-    with open(file_name, "rb") as index_file:
-        index = pickle.load(index_file)
+    try:
+        with open(file_name, "rb") as index_file:
+            index = pickle.load(index_file)
+    except IOError:
+        return "No, {} file found.".format(file_name)
+    except EOFError:
+        return "File corrupted."
     return index
 
 index = load_index()
@@ -74,7 +79,7 @@ print '''\
             height:auto;
         }
     </style>
-    
+
     </script>
 </head>
 <body>

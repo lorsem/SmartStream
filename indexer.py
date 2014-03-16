@@ -9,16 +9,19 @@ If it is a movie it returns the filename without the extension
     """
     videoExtensions = ('.wmv', '.mov', '.mpg', '.avi', '.mp4', '.mkv', 'm4v',
                        '.flv')  # Tuple containing supported video extensions
-    if filename.endswith(videoExtensions):
-        return os.path.splitext(filename)[0]
-            # splitext return a list: [name, extension]
+    name, ext = os.path.splitext(filename)
+    if ext in videoExtensions:
+        return name
     else:
         return False
 
 
 def store_index(index):
-    with open("index.pkl", "wb") as output:
-        pickle.dump(index, output)
+    try:
+        with open("index.pkl", "wb") as output:
+            pickle.dump(index, output)
+    except IOError:
+        return "No such file"
 
 
 def getIndex(scanDir, refDir):
@@ -30,25 +33,19 @@ The Function returns a dictionary, key = file name without extension, value = \
 full file path with extension, relative to refDir
     """
     index = {}
-
     # Walk the tree.
-    for root, directories, files in os.walk(scanDir):
-        for filename in files:
-            name = isMovie(filename)  # False if not a movie, else movie-name
-            if name:
-                # Join the two strings in order to form the full filepath.
-                filepath = os.path.join(root, filename)
+    for file in os.list(scanDir).sort():
+        if os.path.isdir(file):
+            index[file] = getIndex(os.path.relpath(file, scanDir), refDir)
+            if not index[file]:
+                index.pop(file)
+        elif isMovie(file):
+                index[file] = os.path.relpath(file, refDir)
                 # Get relative path of file and add it to dictionary.
                 # Relpath returns relative path of first argument based
                     #on second argument
-                index[name] = os.path.relpath(filepath, refDir)
                 # Adds new item to dictionary:
                     #key = movie-name, value = movie's relative path
-        for directory in directories:
-            index[directory] = getIndex(os.path.join(root, directory), refDir)
-            if not index[directory]:
-                index.pop(directory)
-        break
     return index
 
 
@@ -64,6 +61,4 @@ def printIndex(index):
             else:
                 total += 1
             f.write('{} {}\n'.format(key, index[key]))
-                # Python converts \n to os.linesep
-        #f.close() # Just in case... Shouldn't be.. ??
     return total
