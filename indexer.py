@@ -32,7 +32,7 @@ The Function returns a dictionary, key = file name without extension, value = \
 full file path with extension, relative to refDir
     """
     index = {}
-    for file in os.listdir(scanDir).sort():
+    for file in sorted(os.listdir(scanDir)):
         if os.path.isdir(file):
             with getIndex(os.path.relpath(file, scanDir), refDir) as dir:
                 if dir != {}:
