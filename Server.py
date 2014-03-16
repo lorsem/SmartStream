@@ -8,7 +8,7 @@ form = cgi.FieldStorage()			# Get POST data
 scanDir = form.getfirst("scanDir")			# Pull fname field data
 Index = open('/var/www/list_of_films.txt', 'w')
 if scanDir is None:
-    scanDir = '/var/www'
+    scanDir = '/var/www/video'
 refDir = '/var/www'
 TheIndex = indexer.getIndex(scanDir, refDir)
 total = indexer.printIndex(TheIndex)
