@@ -1,5 +1,13 @@
 #!/usr/bin/env python
+'''
+Load 'index.pkl' (MUST be in /var/www/cgi-bin) previously created with
+indexer.store_index().
+Create 'Tree' menu (not really good looking atm), with:
+Link to file: pass to ShowVideo.py two arguments: VidPath (RelPath to video)
+                                                 and VidName
 
+
+'''
 import pickle
 import cgi
 import cgitb
@@ -20,7 +28,7 @@ def CreateNestedElements(TheFilms, IndexHtml):
                             ''')
         else:
             IndexHtml.write('''<br><li><a href = "{0}">{1}</a></li>
-                            '''.format('/cgi-bin/ShowVideo.py?VidPath={}&VidName={}"ciccia'.format('/' + TheFilms[Name], Name),
+                            '''.format('/cgi-bin/ShowVideo.py?VidPath={}&VidName={}'.format('/' + TheFilms[Name], Name),
                                        Name)
                            )
     
