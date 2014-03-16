@@ -3,6 +3,7 @@ import cgi
 import cgitb
 cgitb.enable()
 import indexer
+import CreateFilmIndex
 # Retrieve form fields
 form = cgi.FieldStorage()			# Get POST data
 scanDir = form.getfirst("scanDir")			# Pull fname field data
@@ -14,6 +15,10 @@ TheIndex = indexer.getIndex(scanDir, refDir)
 total = indexer.printIndex(TheIndex)
 indexer.store_index(TheIndex)
 #output on the page of the script
+
+CreateFilmIndex.IndexEverything()
+
+
 print "Content-Type: text/html; charset=UTF-8"
 print ''
 print '''

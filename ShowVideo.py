@@ -31,4 +31,4 @@ print '''
                 <br>
                 </body>
                 </html>
-'''.format(VidName, Path, 'video/' + Path.split('.')[-1])
+'''.format(VidName, 'http://192.168.1.150' + Path, 'video/' + Path.split('.')[-1])
