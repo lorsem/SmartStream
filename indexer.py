@@ -36,7 +36,7 @@ full file path with extension, relative to refDir
     for file in os.list(scanDir).sort():
         if os.path.isdir(file):
             with getIndex(os.path.relpath(file, scanDir), refDir) as dir:
-                if dir is not {}:
+                if dir != {}:
                     index[file] = dir
         elif isMovie(file):
                 index[file] = os.path.relpath(file, refDir)
