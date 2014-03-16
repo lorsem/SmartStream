@@ -5,7 +5,7 @@ import pickle
 def isMovie(filename):
     """
 If it is a movie it returns the filename without the extension
-(to be used in index file) else return False
+(to be used in index file) else returns False
     """
     videoExtensions = ('.wmv', '.mov', '.mpg', '.avi', '.mp4', '.mkv', 'm4v',
                        '.flv')  # Tuple containing supported video extensions
@@ -46,9 +46,9 @@ FUTURE IMPROVEMENTS
     Another level of optimization could be: having just a list of the elements in the dir (instead of a dictionary of
     their names and paths) and use os.path.join(os.getcwd(), elementName) to construct it's absolute
     path and use it to call os.isdir .... 
-    This way we would only have a list of the elements in the directory, listed with os.listdir and than 
+    This way we would only have a list of the elements in the directory, listed with os.listdir and then 
     we would be able to check directories by their name...
-    This was probably a way better and simpler way to go instead of the dict way
+    This is probably a better and simpler way to go instead of using the "dict" way
 
     """
     index = {}
