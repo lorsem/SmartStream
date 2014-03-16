@@ -54,7 +54,6 @@ FUTURE IMPROVEMENTS
     index = {}
     # dirDict is a dictionary mapping names of elements in scanDir to abs path
     dirDict = {key : os.path.join(scanDir, key) for key in os.listdir(scanDir)}
-    # dirList is a list to iterates sorted keys. SACRIFICABILE in una futura ottimizzazione più pythonica
     dirList = dirDict.keys()
     for elem in sorted(dirList):
         # name = FALSE if not a movie, movie-name cleaned from extenion if a movie
