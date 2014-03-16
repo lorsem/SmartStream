@@ -15,7 +15,6 @@ If it is a movie it returns the filename without the extension
     else:
         return False
 
-
 def store_index(index):
     try:
         with open("index.pkl", "wb") as output:
@@ -33,7 +32,7 @@ The Function returns a dictionary, key = file name without extension, value = \
 full file path with extension, relative to refDir
     """
     index = {}
-    for file in os.list(scanDir).sort():
+    for file in os.listdir(scanDir).sort():
         if os.path.isdir(file):
             with getIndex(os.path.relpath(file, scanDir), refDir) as dir:
                 if dir != {}:
