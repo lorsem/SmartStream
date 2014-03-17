@@ -31,9 +31,6 @@ Searched <b>{1}</b>
 <br>
 <a href="http://192.168.1.150/index.html"><b>HOME</b></a>
 <br>
-<a href="http://192.168.1.150/cgi-bin/print_list.py"><b>The index (Philippe)</b></a>
-<br>
-{2}
 </body>
 </html>
-'''.format(str(total), scanDir, 'NULL') #TheIndex
+'''.format(str(total), scanDir) #TheIndex
