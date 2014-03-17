@@ -14,7 +14,7 @@ import cgitb
 cgitb.enable()
 
 def CreateNestedElements(TheFilms, IndexHtml):
-    for Name  in TheFilms.keys():
+    for Name  in TheFilms.iterkeys():
         if type(TheFilms[Name]) == dict:
             IndexHtml.write('''
                             <br>
