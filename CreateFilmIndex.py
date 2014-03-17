@@ -32,9 +32,9 @@ def CreateNestedElements(TheFilms, IndexHtml):
                                        Name)
                            )
     
-def IndexEverything():
-    
-    Index = open ('index.pkl', 'rb')
+def IndexEverything(Index = None):
+    if Index == None: 
+        Index = open ('index.pkl', 'rb')
     TheFilms = pickle.load(Index)
     
     IndexHtml = open ('/var/www/FilmIndex.html', 'w')

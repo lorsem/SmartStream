@@ -16,7 +16,7 @@ total = indexer.printIndex(TheIndex)
 indexer.store_index(TheIndex)
 #output on the page of the script
 
-CreateFilmIndex.IndexEverything()
+CreateFilmIndex.IndexEverything(TheIndex)
 
 
 print "Content-Type: text/html; charset=UTF-8"
