@@ -35,27 +35,14 @@ full file path with extension, relative to refDir
 DIR LISTING:
     os.dirlist(d) retruns a list of what is in d. Just names. Since we need to know what is a directory 
     and what's not we call os.path.isdir(d) where d MUST be a path, not just the name of a directory.
-    See "Future improvememnt" to see how thath could have been easily solved... 
     
     dirDict is a dictionary: key = name, value = abs path
-    dirList contains dirDict keys, therefore it is a list of all the elements in the scanned directory.
-    It is what os.dirlist would have returned. We don't actually need it....
-
-FUTURE IMPROVEMENTS
-    dirList can be obviously avoided....
-    Another level of optimization could be: having just a list of the elements in the dir (instead of a dictionary of
-    their names and paths) and use os.path.join(os.getcwd(), elementName) to construct it's absolute
-    path and use it to call os.isdir .... 
-    This way we would only have a list of the elements in the directory, listed with os.listdir and then 
-    we would be able to check directories by their name...
-    This is probably a better and simpler way to go instead of using the "dict" way
 
     """
     index = {}
     # dirDict is a dictionary mapping names of elements in scanDir to abs path
     dirDict = {key : os.path.join(scanDir, key) for key in os.listdir(scanDir)}
-    dirList = dirDict.keys()
-    for elem in sorted(dirList):
+    for elem in dirDict.iterkeys():
         # name = FALSE if not a movie, movie-name cleaned from extenion if a movie
         name = isMovie(elem)
         if name:

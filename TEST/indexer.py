@@ -39,8 +39,7 @@ DIR LISTING:
     """
     index = {}
     dirDict = {key : os.path.join(scanDir, key) for key in os.listdir(scanDir)}
-    dirList = dirDict.keys()
-    for elem in sorted(dirList):
+    for elem in dirDict.iterkeys():
         name = isMovie(elem)
         if name:
             index[name] = os.path.relpath(dirDict[elem], refDir)
