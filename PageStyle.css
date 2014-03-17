@@ -1,20 +1,24 @@
 <style type="text/css">
-a:link {
-    color : black ;
-    background-color : white ;
-	    text-decoration: none;     /* no underline */
-}
-a:visited {
-    color : black ;
-    background-color : white ;
-	    text-decoration: none;     /* no underline */
-}
-a:hover {
-    color : #000 ;
-    background-color : grey ;
-
-	    text-decoration: none;     /* no underline */
-}
+        a:link {
+            color : black ;
+            background-color:transparent;
+            text-decoration:none;     /* no underline */
+        }
+        a:visited {
+            color : black ;
+            background-color:transparent;
+            text-decoration:none;     /* no underline */
+        }
+        a:hover {
+            color : #000 ;
+            background-color:transparent;
+            text-decoration:none;     /* no underline */
+        }
+        a:active {
+            color : black ;
+            background-color:transparent;
+            text-decoration:none;
+        }
 #demo-with-image .expander.expanded {
                 padding-left: 13px;
                 background-position: left center;
@@ -22,7 +26,7 @@ a:hover {
                 background-image: url(wallpapers/expanded.gif);
             }
         
-            #demo-with-image .expander.collapsed {
+#demo-with-image .expander.collapsed {
                 padding-left: 13px;
                 background-position: left center;
                 background-repeat: no-repeat;
@@ -103,9 +107,9 @@ a:hover {
             background-color:white;
             overflow-y: scroll;
             overflow-x: hidden;
-			opacity:0.7;
+            opacity:0.7;
         }
-		#list {
+        #list {
             width : 75%;
             height:inherit;
             /* height : 100%; */
@@ -113,8 +117,8 @@ a:hover {
             overflow-x: hidden;
             background-color:white;
             float: right;
-			opacity:0.7;
-			padding-left:20px;
+            opacity:0.7;
+            padding-left: 20px;
         }
         #footer{
             height:auto;
