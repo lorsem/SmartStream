@@ -62,9 +62,8 @@ def printIndex(index):
     cwd = os.getcwd()
     textPath = os.path.join(cwd, 'video_index.txt')
     total = 0
-    #sortedKeys = sorted(index.keys())  # A list of sorted keys
     with open(textPath, 'w') as f:
-        for key in sorted(index.keys()):
+        for key in sorted(index.keys()): # A list of sorted keys
             if type(index[key]) is dict:
                 total += printIndex(index[key])
             else:
