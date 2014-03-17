@@ -97,7 +97,7 @@
         }
         #body p {
             color : black;
-            font : helvetica; 
+            font-family: serif;
             text-indent : 20px;
         }
         #menu {
@@ -115,7 +115,7 @@
             height:inherit;
             /* height : 100%; */
             overflow-y: scroll;
-            overflow-x: no-content;
+            overflow-x: hidden;
             background-color:white;
             float: right;
             opacity:0.7;
@@ -124,5 +124,3 @@
         #footer{
             height:auto;
         }
-        
-</style>
