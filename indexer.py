@@ -57,16 +57,14 @@ DIR LISTING:
                 index[elem] = tempIndex
     return index
 
-
-def printIndex(index):
-    cwd = os.getcwd()
-    textPath = os.path.join(cwd, 'video_index.txt')
+def CountFiles(index):
     total = 0
-    with open(textPath, 'w') as f:
-        for key in sorted(index.keys()): # A list of sorted keys
-            if type(index[key]) is dict:
-                total += printIndex(index[key])
-            else:
-                total += 1
-            f.write('{} {}\n'.format(key, index[key]))
+    for key in sorted(index.keys()): # A list of sorted keys
+        if type(index[key]) is dict:
+            total += printIndex(index[key])
+        else:
+            total += 1
     return total
+
+def printIndex(index): #Old name, kept for campatibility
+    return CountFiles(index)
