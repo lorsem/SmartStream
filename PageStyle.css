@@ -1,4 +1,3 @@
-<style type="text/css">
         a:link {
             color : black ;
             background-color:transparent;
@@ -19,14 +18,14 @@
             background-color:transparent;
             text-decoration:none;
         }
-#demo-with-image .expander.expanded {
+        #demo-with-image .expander.expanded {
                 padding-left: 13px;
                 background-position: left center;
                 background-repeat: no-repeat;
                 background-image: url(wallpapers/expanded.gif);
             }
         
-#demo-with-image .expander.collapsed {
+        #demo-with-image .expander.collapsed {
                 padding-left: 13px;
                 background-position: left center;
                 background-repeat: no-repeat;
@@ -38,14 +37,16 @@
             /* width : auto; */
             /* background-color: red; */
         }
-		body{
-			 background-size:	cover;
-			 background-repeat:no-repeat;
-			 background-image:	url(wallpapers/SmartStrWall.jpg);
-			 background-position:bottom;
-		}
-		.content {display:none;
-		padding-left:20px;}
+        body{
+            background-size:	cover;
+            background-repeat:no-repeat;
+            background-image:	url(wallpapers/SmartStrWall.jpg);
+            background-position:bottom;
+        }
+        .content {
+            display:none;
+            padding-left:20px;
+        }
         
         .toggle.expander.expanded {
             padding-left: 13px;
@@ -123,4 +124,5 @@
         #footer{
             height:auto;
         }
-    </style>
+        
+</style>
