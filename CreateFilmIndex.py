@@ -14,7 +14,7 @@ import cgitb
 cgitb.enable()
 
 def CreateNestedElements(TheFilms, IndexHtml):
-    for Name  in TheFilms.iterkeys():
+    for Name in TheFilms.iterkeys():
         if type(TheFilms[Name]) == dict:
             IndexHtml.write('''
                             <br>
@@ -35,39 +35,39 @@ def CreateNestedElements(TheFilms, IndexHtml):
 def IndexEverything(Index = None):
     if Index == None: 
         Index = open ('index.pkl', 'rb')
+   
     TheFilms = pickle.load(Index)
-    
     IndexHtml = open ('/var/www/FilmIndex.html', 'w')
-    #head part of page
+    #head part of page:
     IndexHtml.write(
-    '''
-    <html>
-    <head>
-    <script type="text/javascript" src="simpletreemenu.js">
-    
-    /***********************************************
-    * Simple Tree Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
-    * This notice MUST stay intact for legal use
-    * Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
-    ***********************************************/
-    
-    </script>
-    <title>SmartStream: Videos</title>
-    <link rel="stylesheet" type="text/css" href="simpletree.css" />
-    </head>
-    
-    <body>
-        <h4>Available Movies</h4>
-        <a href="./index.html"><h4>Home Page</h4></a>
-    <a href="javascript:ddtreemenu.flatten('treemenu1', 'expand')">Expand All</a> |
-    <a href="javascript:ddtreemenu.flatten('treemenu1', 'contact')">Contract All</a>
-    
-    <ul id="treemenu1" class="treeview">
-    
-    ''')
-    
+        '''
+        <html>
+        <head>
+        <script type="text/javascript" src="simpletreemenu.js">
+        
+        /***********************************************
+        * Simple Tree Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+        * This notice MUST stay intact for legal use
+        * Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+        ***********************************************/
+        
+        </script>
+        <title>SmartStream: Videos</title>
+        <link rel="stylesheet" type="text/css" href="simpletree.css" />
+        </head>
+        
+        <body>
+            <h4>Available Movies</h4>
+            <a href="./index.html"><h4>Home Page</h4></a>
+        <a href="javascript:ddtreemenu.flatten('treemenu1', 'expand')">Expand All</a> |
+        <a href="javascript:ddtreemenu.flatten('treemenu1', 'contact')">Contract All</a>
+        
+        <ul id="treemenu1" class="treeview">
+        
+        ''')
+    #Add all the nested content:
     CreateNestedElements(TheFilms, IndexHtml)
-    
+    #End the html tags as needed
     IndexHtml.write('''
                     
                     </ul>
@@ -77,5 +77,6 @@ def IndexEverything(Index = None):
                     </body>
                     </html>
                     ''')
+    #Close the index file 
     IndexHtml.close()
     
