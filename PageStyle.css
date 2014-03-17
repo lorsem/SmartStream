@@ -61,14 +61,7 @@
             background-repeat: no-repeat;
             background-image: url(wallpapers/collapsed.gif);
         }        
-        
-        #demo-nesting-sub1 {
-            margin-left: 20px;
-        }
-        
-        #demo-nesting-sub2 {
-            margin-left: 40px;
-        }
+       
         #wrap {
             width : auto;
             height : 100%;
