@@ -83,7 +83,7 @@
             height : 20%;
             /* padding:auto; */
             display: table-cell;
-            vertical-align:center;
+            vertical-align: middle;
         }
         #body {
             width : auto;
@@ -92,7 +92,7 @@
         #title {
             font-family : helvetica;
             font-size: 40px;
-            padding : auto ;
+            /*padding: auto; !!! Not allowed*/
         }
         #body p {
             color : black;
@@ -114,7 +114,7 @@
             height:inherit;
             /* height : 100%; */
             overflow-y: scroll;
-            overflow-x: hidden;
+            overflow-x: no-content;
             background-color:white;
             float: right;
             opacity:0.7;
