@@ -2,6 +2,36 @@
 <html>
 <head>
 <style type="text/css">
+a:link {
+    color : black ;
+    background-color : white ;
+	    text-decoration: none;     /* no underline */
+}
+a:visited {
+    color : black ;
+    background-color : white ;
+	    text-decoration: none;     /* no underline */
+}
+a:hover {
+    color : #000 ;
+    background-color : light-grey ;
+
+	    text-decoration: none;     /* no underline */
+}
+#demo-with-image .expander.expanded {
+                padding-left: 13px;
+                background-position: left center;
+                background-repeat: no-repeat;
+                background-image: url(wallpapers/expanded.gif);
+            }
+        
+            #demo-with-image .expander.collapsed {
+                padding-left: 13px;
+                background-position: left center;
+                background-repeat: no-repeat;
+                background-image: url(wallpapers/collapsed.gif);
+            }        
+
         html, body {
             /* height: auto; */
             /* width : auto; */
@@ -13,7 +43,8 @@
 			 background-image:	url(wallpapers/SmartStrWall.jpg);
 			 background-position:bottom;
 		}
-		.content {display:none;}
+		.content {display:none;
+		padding-left:20px;}
         
         .toggle.expander.expanded {
             padding-left: 13px;
@@ -86,6 +117,7 @@
             background-color:white;
             float: right;
 			opacity:0.7;
+			padding-left:20px;
         }
         #footer{
             height:auto;
@@ -98,16 +130,6 @@
             $('.expander').simpleexpand();
         });
     </script>
-    <script language="javascript">
-function print_contnent(lista) {
-    for (i=0; i<100;i++)
-        document.write("<p>"+ i + "</p>");
-    for(i=0; i<lista.length;i++){
-            document.write("<p> &nbsp;" + lista[i] + "</p>");
-    }
-}
-
-    </script>
 </head>
 <body>
 <div id="wrap"> 
@@ -119,34 +141,22 @@ function print_contnent(lista) {
     </div>
         <div id="body">
             <div id="list">
-                <div class="demo-frame">
-          <a id="expander2" class="expander" href="#">click me</a>
-          <div class="content">
-              <p>Donec porta porttitor tellus sit amet cursus. Morbi nulla odio,
-              blandit ac interdum at, consectetur eget purus. Ut cursus rhoncus. </p>
-  
-              <div id="demo-nesting-sub1">    
-                  <a id= "expander3" class="expander" href="#">more...</a>
-                  <div class="content">
-                      <p>Donec porta porttitor tellus sit amet cursus. Morbi nulla odio,
-                      blandit ac interdum at, consectetur eget purus. Ut cursus rhoncus. </p> 
-  
-                      <div id="demo-nesting-sub2">    
-                          <a id= "expander4" class="expander" href="#">even more...</a>
-                          <div class="content">
-                              <p>Donec porta porttitor tellus sit amet cursus. Morbi nulla odio,
-                              blandit ac interdum at, consectetur eget purus. Ut cursus rhoncus. </p> 
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div> 
+      <div class="demo-frame">
+                <div id="demo-with-image">
+                    <a class="expander"  href="">click me</a>
+                    <div class="content">
+                    <a href="stocazzo">You can use<br></a>
+                                      You can use<br>
+                    You can use<br>
+                    You can use<br>
+                    </div>
+                    
+                </div>
+            </div>
             </div>
             <div id="menu">
-                <script>
-                    print_contnent(test_list);
-                </script>
+       
+       
             </div>
         </div>
     <div id="footer">
