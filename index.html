@@ -7,6 +7,35 @@
             /* width : auto; */
             /* background-color: red; */
         }
+		body{
+			 background-size:	cover;
+			 background-repeat:no-repeat;
+			 background-image:	url(wallpapers/SmartStrWall.jpg);
+			 background-position:bottom;
+		}
+		.content {display:none;}
+        
+        .toggle.expander.expanded {
+            padding-left: 13px;
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-image: url(wallpapers/expanded.gif);
+        }
+    
+        .toggle.expander.collapsed {
+            padding-left: 13px;
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-image: url(wallpapers/collapsed.gif);
+        }        
+        
+        #demo-nesting-sub1 {
+            margin-left: 20px;
+        }
+        
+        #demo-nesting-sub2 {
+            margin-left: 40px;
+        }
         #wrap {
             width : auto;
             height : 100%;
@@ -28,22 +57,13 @@
             width : auto;
             height : 75%;
         }
-        #list {
-            width : 75%;
-            height:inherit;
-            /* height : 100%; */
-            overflow-y: scroll;
-            overflow-x: hidden;
-            background-color:black;
-            float: left;
-        }
         #title {
             font-family : helvetica;
             font-size: 40px;
             padding : auto ;
         }
         #body p {
-            color : white;
+            color : black;
             font : helvetica; 
             text-indent : 20px;
         }
@@ -51,15 +71,33 @@
             width: 20%;
             height:inherit;
             /* height: 100%; */
-            float: right;
-            background-color:black;
+            float: left;
+            background-color:white;
             overflow-y: scroll;
             overflow-x: hidden;
+			opacity:0.7;
+        }
+		#list {
+            width : 75%;
+            height:inherit;
+            /* height : 100%; */
+            overflow-y: scroll;
+            overflow-x: hidden;
+            background-color:white;
+            float: right;
+			opacity:0.7;
         }
         #footer{
             height:auto;
         }
     </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="ExpandCollapse.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.expander').simpleexpand();
+        });
+    </script>
     <script language="javascript">
 function print_contnent(lista) {
     for (i=0; i<100;i++)
@@ -81,10 +119,29 @@ function print_contnent(lista) {
     </div>
         <div id="body">
             <div id="list">
-                <script>
-                    var test_list = new Array( "ciao", "hello", "hallo" );
-                    print_contnent(test_list);
-                </script>
+                <div class="demo-frame">
+          <a id="expander2" class="expander" href="#">click me</a>
+          <div class="content">
+              <p>Donec porta porttitor tellus sit amet cursus. Morbi nulla odio,
+              blandit ac interdum at, consectetur eget purus. Ut cursus rhoncus. </p>
+  
+              <div id="demo-nesting-sub1">    
+                  <a id= "expander3" class="expander" href="#">more...</a>
+                  <div class="content">
+                      <p>Donec porta porttitor tellus sit amet cursus. Morbi nulla odio,
+                      blandit ac interdum at, consectetur eget purus. Ut cursus rhoncus. </p> 
+  
+                      <div id="demo-nesting-sub2">    
+                          <a id= "expander4" class="expander" href="#">even more...</a>
+                          <div class="content">
+                              <p>Donec porta porttitor tellus sit amet cursus. Morbi nulla odio,
+                              blandit ac interdum at, consectetur eget purus. Ut cursus rhoncus. </p> 
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div> 
             </div>
             <div id="menu">
                 <script>
