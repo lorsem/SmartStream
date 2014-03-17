@@ -13,13 +13,13 @@
     <title>SmartStream Home Page</title>
 </head>
 <body>
-<div id="wrap"> 
-    <div id="header">
-        <h3 id="title"><font color="red">SmartStream</font></h3>
-        <div id="logo">
-
+    <div id="wrap"> 
+        <div id="header">
+            <h3 id="title"><font color="red">SmartStream</font></h3>
+                <div id="logo">
+    
+                </div>
         </div>
-    </div>
         <div id="body">
             <div id="list">
                 <div class="demo-frame">
@@ -34,31 +34,29 @@
                     </div>
                 </div>
             </div>
-        <div id="menu">
-            <div id="list">
-                <div class="demo-frame">
-                  <div id="demo-with-image">
-                      <a class="expander"  href="">Create/Recreate Index</a>
-                        <div class="content">
-                            <form name="Index_form" action="./cgi-bin/Server.py" method="POST">
-                              Path to Index (<i>Nothing</i> for default):
-                              <br  />
-                              <input name="scanDir" type="text"  />
-                              <br  />
-                              <input type="submit" value="submit">
-                            </form>
-                          
-                          
+            <div id="menu">
+                <div id="list">
+                    <div class="demo-frame">
+                        <div id="demo-with-image">
+                            <a class="expander"  href="">Create/Recreate Index</a>
+                                <div class="content">
+                                    <form name="Index_form" action="./cgi-bin/Server.py" method="POST">
+                                        Path to Index (<i>Nothing</i> for default):
+                                        <br  />
+                                        <input name="scanDir" type="text"  />
+                                        <br  />
+                                        <input type="submit" value="submit">
+                                    </form> 
+                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
-       
+            <div id="footer">
+                <b>Footer</b>
             </div>
         </div>
-    <div id="footer">
-        test
     </div>
-</div>
-</body>
+    </body>
 
 </html>
