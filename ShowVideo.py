@@ -23,7 +23,7 @@ print '''
                 <body>
                 <center>File: {0}</center>
                 
-                <video width="1920" height="1080" controls autoplay poster="/wallpapers/loading.gif">
+                <video width="1280" height="720" controls autoplay poster="/wallpapers/loading.gif">
                   <source src="{1}">
                 </video>
                 <br><br>
