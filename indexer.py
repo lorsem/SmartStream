@@ -1,6 +1,7 @@
+#!/usr/bin/env pypy
+
 import os
 import pickle
-
 
 def isMovie(filename):
     """
