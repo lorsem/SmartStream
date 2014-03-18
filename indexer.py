@@ -59,7 +59,7 @@ DIR LISTING:
 
 def CountFiles(index):
     total = 0
-    for key in sorted(index.keys()): # A list of sorted keys
+    for key in index.iterkeys(): # A list of sorted keys
         if type(index[key]) is dict:
             total += printIndex(index[key])
         else:
