@@ -43,6 +43,14 @@
         background-image:	url(wallpapers/SmartStrWall.jpg);
         background-position:bottom;
     }
+    div.videoImage {
+        background-image:url(wallpapers/Video.png);
+        background-repeat: no-repeat;
+        background-position: left center;
+        margin:0; /* If you want no margin */
+        padding:0; /*if your want to padding */
+        text-indent: 15px;
+    }
     .content {
         display:none;
         padding-left:20px;
