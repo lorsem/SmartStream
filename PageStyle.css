@@ -87,10 +87,6 @@
         display: table-cell;
         vertical-align: middle;
     }
-    #body {
-        width : auto;
-        height : 75%;
-    }
     #title {
         font-family : helvetica;
         font-size: 40px;
@@ -101,15 +97,15 @@
         font-family: serif;
         text-indent : 20px;
     }
+    #body {
+        width : auto;
+        height : 75%;
+    }
     #menu {
         width: 20%;
-        height:inherit;
+        height:86.8%; /* WHY inherit doesn't work?!?!?!?*/
         /* height: 100%; */
-        float: left;
-        background-color:white;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        opacity:0.7;
+       
     }
     #list {
         width : 75%;
