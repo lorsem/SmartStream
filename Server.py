@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 import cgi
 import cgitb
-cgitb.enable()
 import indexer
 import CreateFilmIndex
+
+cgitb.enable()
 # Retrieve form fields
 form = cgi.FieldStorage()			# Get POST data
 scanDir = form.getfirst("scanDir")			# Pull fname field data
@@ -13,7 +14,7 @@ if scanDir is None:
 refDir = '/var/www'
 TheIndex = indexer.getIndex(scanDir, refDir)
 total = indexer.printIndex(TheIndex)
-indexer.store_index(TheIndex)
+indexer.store_index(TheIndex) #Quite useless nut not a performance issue
 #output on the page of the script
 
 CreateFilmIndex.IndexEverything(TheIndex)
