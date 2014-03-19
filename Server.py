@@ -24,13 +24,48 @@ print "Content-Type: text/html; charset=UTF-8"
 print ''
 print '''
 <html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/PageStyle.css" />
+    <style type="text/css">
+        a:link {{
+        color : white ;
+        background-color:transparent;
+        text-decoration:none;     /* no underline */
+    }}
+    a:visited {{
+        color : white ;
+        background-color:transparent;
+        text-decoration:none;     /* no underline */
+    }}
+    a:hover {{
+        color : white ;
+        background-color:transparent;
+        text-decoration:none;     /* no underline */
+    }}
+    a:active {{
+        color : white ;
+        background-color:transparent;
+        text-decoration:none;
+    }}
+    </style>
+    <link rel="SHORTCUT ICON" HREF="/wallpapers/icon_small.png">
+<title>SmartStream : Indexer</title>
+</head>
 <body>
-Indexing completed! <br>
-Found <b>{0}</b> films!
+        <img src="/wallpapers/Logo.png" alt="SmartStream" />
+                <div id="logo">
+                </div>
+<br><center><font color="White" size="4">Indexing completed!  <br>
+Found <b>{0}</b> films! 
+<br></font><font color="#FFFFFF" size="3">
+Searched <b>{1}</b></font></center>
 <br>
-Searched <b>{1}</b>
 <br>
+<center>
+<font color="White" size="5">
 <a href="http://192.168.1.150/index.html"><b>HOME</b></a>
+</font>
+</center>
 <br>
 </body>
 </html>
