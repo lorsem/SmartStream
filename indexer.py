@@ -44,6 +44,8 @@ DIR LISTING:
     # dirDict is a dictionary mapping names of elements in scanDir to abs path
     dirDict = {key : os.path.join(scanDir, key) for key in os.listdir(scanDir)}
     for elem in dirDict.iterkeys():
+        if elem.startswith('.'):
+            continue
         # name = FALSE if not a movie, movie-name cleaned from extenion if a movie
         name = isMovie(elem)
         if name:
