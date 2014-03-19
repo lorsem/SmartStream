@@ -17,17 +17,16 @@ def CreateNestedElements(TheFilms, IndexHtml):
     for Name in TheFilms.iterkeys():
         if type(TheFilms[Name]) == dict:
             IndexHtml.write('''
-                            <br>
-                            <li>{}
-                            <ul>
+                            <a class="expander"  href="#">{}</a>
+                            <div class="content">
                             '''.format(Name))
             CreateNestedElements(TheFilms[Name], IndexHtml)
             IndexHtml.write('''
-                            </ul>
-                            </li>
+                            </div>
                             ''')
         else:
-            IndexHtml.write('''<br><li><a href = "{0}">{1}</a></li>
+            IndexHtml.write('''
+                            <a href="{0}"><div class="videoImage">{1}</div></a>
                             '''.format('/cgi-bin/ShowVideo.py?VidPath={}&VidName={}'.format('/' + TheFilms[Name], Name),
                                        Name)
                            )
@@ -42,42 +41,69 @@ def IndexEverything(Index = None):
     #head part of page:
     IndexHtml.write(
         '''
-        <html>
-        <head>
-        <script type="text/javascript" src="simpletreemenu.js">
-        
-        /***********************************************
-        * Simple Tree Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
-        * This notice MUST stay intact for legal use
-        * Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
-        ***********************************************/
-        
-        </script>
-        <title>SmartStream: Videos</title>
-        <link rel="stylesheet" type="text/css" href="simpletree.css" />
-        </head>
-        
-        <body>
-            <h4>Available Movies</h4>
-            <a href="./index.html"><h4>Home Page</h4></a>
-        <a href="javascript:ddtreemenu.flatten('treemenu1', 'expand')">Expand All</a> |
-        <a href="javascript:ddtreemenu.flatten('treemenu1', 'contact')">Contract All</a>
-        
-        <ul id="treemenu1" class="treeview">
-        
+    
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="PageStyle.css" />
+    <link rel="SHORTCUT ICON" HREF="wallpapers/icon_small.png">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="ExpandCollapse.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.expander').simpleexpand();
+        });
+    </script>
+    <title>SmartStream Home Page</title>
+</head>
+<body>
+    <div id="wrap"> 
+        <div id="header">
+            <h3 id="title"><font color="red">SmartStream</font></h3>
+                <div id="logo">
+    
+                </div>
+        </div>
+        <div id="body">
+            <div id="list">
+                <div class="demo-frame">
+                    <div id="demo-with-image">
+                        
+                        
         ''')
     #Add all the nested content:
     CreateNestedElements(TheFilms, IndexHtml)
     #End the html tags as needed
-    IndexHtml.write('''
-                    
-                    </ul>
-                    <script type="text/javascript">
-                    ddtreemenu.createTree("treemenu1", true)
-                    </script>
-                    </body>
-                    </html>
-                    ''')
+    IndexHtml.write('''            
+                       </div>
+                </div>
+            </div>
+            <div id="menu">
+                <div id="list">
+                    <div class="demo-frame">
+                        <div id="demo-with-image">
+                            <a class="expander"  href="#">Create/Recreate Index</a>
+                                <div class="content">
+                                    <form name="Index_form" action="./cgi-bin/Server.py" method="POST">
+                                        Path to Index (<i>Nothing</i> for default):
+                                        <br  />
+                                        <input name="scanDir" type="text"  />
+                                        <br  />
+                                        <input type="submit" value="submit">
+                                    </form> 
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                <b>Footer</b>
+            </div>
+        </div>
+    </div>
+    </body>
+
+</html>
+''')
     #Close the index file 
     IndexHtml.close()
     
