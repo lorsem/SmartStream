@@ -41,7 +41,7 @@ def IndexEverything(Index = None):
         TheFilms = pickle.load(Index)
     else:
         TheFilms = Index
-    IndexHtml = open ('/var/www/FilmIndex.html', 'w')
+    IndexHtml = open ('/var/www/index.html', 'w')
     #head part of page:
     IndexHtml.write(
         '''
