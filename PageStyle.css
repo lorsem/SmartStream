@@ -74,7 +74,8 @@
         width : auto;
         height : 100%;
         margin: 0 auto;
-        max-width: 1280px; 
+        max-width: 1280px;
+        
         /* max-height : 820px; */
         /* padding : 3%; */
         /* background-color: grey; */
@@ -84,6 +85,7 @@
         width : auto;
         height : 20%;
         /* padding:auto; */
+        margin-top: 125px;
         display: table-cell;
         vertical-align: middle;
     }
@@ -98,6 +100,7 @@
         text-indent : 20px;
     }
     #body {
+        margin-top: 25px; /* Added for logo */
         width : auto;
         height : 75%;
     }
