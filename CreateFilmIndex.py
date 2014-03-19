@@ -49,10 +49,10 @@ def IndexEverything(Index = None):
 
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="PageStyle.css" />
-    <link rel="SHORTCUT ICON" HREF="wallpapers/icon_small.png">
+    <link rel="stylesheet" type="text/css" href="/PageStyle.css" />
+    <link rel="SHORTCUT ICON" HREF="/wallpapers/icon_small.png">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="ExpandCollapse.js"></script>
+    <script type="text/javascript" src="/ExpandCollapse.js"></script>
     <script type="text/javascript">
         $(function () {
             $('.expander').simpleexpand();
@@ -63,7 +63,8 @@ def IndexEverything(Index = None):
 <body>
     <div id="wrap"> 
         <div id="header">
-            <img src="wallpapers/Logo.png" alt="SmartStream" />
+        <a href="/">
+            <img src="/wallpapers/Logo.png" alt="SmartStream" /></a>
                 <div id="logo">
     
                 </div>

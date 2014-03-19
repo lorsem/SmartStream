@@ -52,7 +52,8 @@ print '''
 <title>SmartStream : Indexer</title>
 </head>
 <body>
-        <img src="/wallpapers/Logo.png" alt="SmartStream" />
+<a href="/">
+        <img src="/wallpapers/Logo.png" alt="SmartStream" /></a>
                 <div id="logo">
                 </div>
 <br><center><font color="White" size="4">Indexing completed!  <br>
