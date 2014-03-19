@@ -17,12 +17,16 @@ def CreateNestedElements(TheFilms, IndexHtml):
     for Name in TheFilms.iterkeys():
         if type(TheFilms[Name]) == dict:
             IndexHtml.write('''
-                            <a class="expander"  href="#">{}</a>
-                            <div class="content">
+                            <div class="demo-frame">
+                                <div id="demo-with-image">
+                                    <a class="expander"  href="#">{}</a>
+                                        <div class="content">
                             '''.format(Name))
             CreateNestedElements(TheFilms[Name], IndexHtml)
             IndexHtml.write('''
-                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             ''')
         else:
             IndexHtml.write('''
@@ -42,6 +46,7 @@ def IndexEverything(Index = None):
     IndexHtml.write(
         '''
     
+
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="PageStyle.css" />
@@ -65,17 +70,16 @@ def IndexEverything(Index = None):
         </div>
         <div id="body">
             <div id="list">
-                <div class="demo-frame">
-                    <div id="demo-with-image">
+                
+                
                         
                         
         ''')
     #Add all the nested content:
     CreateNestedElements(TheFilms, IndexHtml)
     #End the html tags as needed
-    IndexHtml.write('''            
-                       </div>
-                </div>
+    IndexHtml.write('''
+                   
             </div>
             <div id="menu">
                 <div id="list">
