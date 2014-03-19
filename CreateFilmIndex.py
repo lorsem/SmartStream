@@ -63,7 +63,7 @@ def IndexEverything(Index = None):
 <body>
     <div id="wrap"> 
         <div id="header">
-            <h3 id="title"><font color="red">SmartStream</font></h3>
+            <img src="wallpapers/Logo.png" alt="SmartStream" />
                 <div id="logo">
     
                 </div>
