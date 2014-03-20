@@ -21,13 +21,17 @@ if fileitem.filename:
    if not os.path.isdir(TargetDir):
       os.makedirs(TargetDir)
    reldir = os.path.join (TargetDir, fn)
-   with open( reldir , 'wb') as file:
-      file.write(fileitem.file.read())
+   file = open( reldir , 'wb')
+   while True:
+      try:
+         file.write(fileitem.file.read(2))
+      except EOFError:
+         message = 'The file "' + fn + '" was uploaded successfully to' + reldir
+         break
+      except Exception:
+         message = 'unknow ERROR'
    
-   message = 'The file "' + fn + '" was uploaded successfully to' + reldir
-   
-else:
-   message = 'No file was uploaded'
+
 
 
 print "Content-Type: text/html; charset=UTF-8"
