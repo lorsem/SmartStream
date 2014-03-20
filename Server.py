@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 import cgi
+import time
 import cgitb
 import indexer
 import CreateFilmIndex
 
+start = time.time()
 cgitb.enable()                       # Retrieve form fields
 form = cgi.FieldStorage()			 # Get POST data
 scanDir = form.getfirst("scanDir")	 # Pull fname field data
@@ -15,7 +17,7 @@ TheIndex = indexer.getIndex(scanDir, refDir)
 total = indexer.printIndex(TheIndex)
 #indexer.store_index(TheIndex)   DELETE
 CreateFilmIndex.IndexEverything(TheIndex)
-
+end = time.time()
 print "Content-Type: text/html; charset=UTF-8"
 print '''
 <html>
@@ -60,9 +62,10 @@ Searched <b>{1}</b></font></center>
 <center>
 <font color="White" size="5">
 <a href="http://192.168.1.150/index.html"><b>HOME</b></a>
+<br> It took {2} seconds
 </font>
 </center>
 <br>
 </body>
 </html>
-'''.format(str(total), scanDir)  # TheIndex
+'''.format(str(total), scanDir, end-start)  # TheIndex
