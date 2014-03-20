@@ -14,7 +14,6 @@ fileitem = form['file']
 
 # Test if the file was uploaded
 if fileitem.filename:
-   
    # strip leading path from file name to avoid directory traversal attacks
    fn = os.path.basename(fileitem.filename)
    TargetDir = os.path.join('/var/www/video', reldir)
@@ -24,7 +23,8 @@ if fileitem.filename:
    file = open( reldir , 'wb')
    while True:
       try:
-         file.write(fileitem.file.read(2))
+         file.write(fileitem.file.read(128)) #Read 128 Bytes and write them(as
+                                                #it works will increase n bytes)
       except EOFError:
          message = 'The file "' + fn + '" was uploaded successfully to' + reldir
          break
