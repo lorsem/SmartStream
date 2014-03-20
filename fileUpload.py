@@ -17,10 +17,14 @@ if fileitem.filename:
    
    # strip leading path from file name to avoid directory traversal attacks
    fn = os.path.basename(fileitem.filename)
-   with open( os.path.join('/var/www/video', reldir) , 'wb') as file:
+   TargetDir = os.path.join('/var/www/video', reldir)
+   if not os.path.isdir(TargetDir):
+      os.makedirs(TargetDir)
+   reldir = os.path.join (TargetDir, fn)
+   with open( reldir , 'wb') as file:
       file.write(fileitem.file.read())
    
-   message = 'The file "' + fn + '" was uploaded successfully'
+   message = 'The file "' + fn + '" was uploaded successfully to' + reldir
    
 else:
    message = 'No file was uploaded'
