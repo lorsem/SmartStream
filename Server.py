@@ -62,7 +62,8 @@ Searched <b>{1}</b></font></center>
 <center>
 <font color="White" size="5">
 <a href="http://192.168.1.150/index.html"><b>HOME</b></a>
-<br> It took {2} seconds
+</font><font color="White" size = "3">
+<br> Indexing took {2} seconds
 </font>
 </center>
 <br>
