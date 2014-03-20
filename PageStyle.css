@@ -18,14 +18,14 @@
         background-color:transparent;
         text-decoration:none;
     }
-    #demo-with-image .expander.expanded {
+    #toggleState .expander.expanded {
             padding-left: 13px;
             background-position: left center;
             background-repeat: no-repeat;
             background-image: url(wallpapers/expanded.gif);
         }
     
-    #demo-with-image .expander.collapsed {
+    #toggleState .expander.collapsed {
             padding-left: 13px;
             background-position: left center;
             background-repeat: no-repeat;

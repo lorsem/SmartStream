@@ -19,7 +19,7 @@ def CreateNestedElements(TheFilms, IndexHtml):
         if type(TheFilms[Name]) == dict:
             IndexHtml.write('''
                             <div class="demo-frame">
-                                <div id="demo-with-image">
+                                <div id="toggleState">
                                     <a class="expander"  href="#">{}</a>
                                         <div class="content">
                             '''.format(Name))
@@ -81,7 +81,7 @@ def IndexEverything(Index = None):
             <div id="menu">
                 <div id="list">
                     <div class="demo-frame">
-                        <div id="demo-with-image">
+                        <div id="toggleState">
                             <a class="expander"  href="#">Create/Recreate Index</a>
                                 <div class="content">
                                     <form name="Index_form" action="./cgi-bin/Server.py" method="POST">
