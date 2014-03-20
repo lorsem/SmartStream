@@ -21,8 +21,8 @@ print '''
         <link rel="stylesheet" type="text/css" href="/PageStyle.css" />
         <link rel="SHORTCUT ICON" HREF="wallpapers/icon_small.png">
         <style type="text/css">
-            body {background-color:black;
-                    background-image:none}
+            body {{background-color:black;
+                    background-image:none}}
         </style>
     </head>
     <body>

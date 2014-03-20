@@ -23,26 +23,26 @@ print '''
 <head>
     <link rel="stylesheet" type="text/css" href="/PageStyle.css" />
     <style type="text/css">
-        a:link {
+        a:link {{
         color : white ;
         background-color:transparent;
         text-decoration:none;     /* no underline */
-    }
-    a:visited {
+    }}
+    a:visited {{
         color : white ;
         background-color:transparent;
         text-decoration:none;     /* no underline */
-    }
-    a:hover {
+    }}
+    a:hover {{
         color : white ;
         background-color:transparent;
         text-decoration:none;     /* no underline */
-    }
-    a:active {
+    }}
+    a:active {{
         color : white ;
         background-color:transparent;
         text-decoration:none;
-    }
+    }}
     </style>
     <link rel="SHORTCUT ICON" HREF="/wallpapers/icon_small.png">
 <title>SmartStream : Indexer</title>
