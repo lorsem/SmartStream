@@ -3,9 +3,10 @@
 import cgi
 import os
 import cgitb
+import time
 
 cgitb.enable()
-
+start = time.time()
 form = cgi.FieldStorage()
 reldir = form.getfirst('dirName')
 if reldir is None:
@@ -21,12 +22,13 @@ if fileitem.filename:
    if not os.path.isdir(TargetDir):
       os.makedirs(TargetDir)
    reldir = os.path.join (TargetDir, fn)
-   file = open( reldir , 'wb')
+   wfile = open( reldir , 'wb')
    message = ''
-   wbytes = 262144
+   kbytes = 1024
+   wbytes = 1024 * kbytes
    i = 0 
 while i<=int(os.getenv('CONTENT_LENGTH')) - 287: #287 undesrstood from tests ?!?!?
-      file.write(fileitem.file.read(wbytes)) #Read 256 kbytes and write them(as    262144
+      wfile.write(fileitem.file.read(wbytes)) #Read 256 kbytes and write them(as    262144
                                            #it works will increase n bytes)
       i += wbytes
 else:
@@ -34,7 +36,7 @@ else:
       
 
 
-
+end = time.time()
 print "Content-Type: text/html; charset=UTF-8"
 print """
 <html>
@@ -80,10 +82,13 @@ Uploaded to:  <b>{1}</b>
 <center>
 <font color="White" size="5">
 <a href="http://192.168.1.150/index.html"><b>HOME</b></a>
+</font><font color="White" size = "3">
+<br> Indexing took {2} seconds
 </font>
+</center>
 </center>
 <br>
 </body>
 </html>
 
-""".format(message, reldir)
+""".format(message, reldir, end-start)
