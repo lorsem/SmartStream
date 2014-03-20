@@ -33,12 +33,10 @@ def CreateNestedElements(TheFilms, IndexHtml):
             IndexHtml.write('''
                             <a href="{0}"><div class="videoImage">{1}</div></a>
                             '''.format(
-                                ('/cgi-bin/ShowVideo.py?VidPath=\
-                                       {}&VidName={}'.format('/' +
+                    '/cgi-bin/ShowVideo.py?VidPath={}&VidName={}'.format('/' +
                                                         TheFilms[Name],
-                                                        Name)).replace(' ', ''),
-                                                        
-                                                        Name)
+                                                        Name),
+                     Name)
                            )
             
 def IndexEverything(Index = None):
