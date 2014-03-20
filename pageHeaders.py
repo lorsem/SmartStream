@@ -1,15 +1,17 @@
-def Top:
-    return
-    '''
-    '''
 
-def StartSubMenu:
-    return
+def Top():
     '''
     '''
-    
-def EndSubMenu:
-    return
+    pass
+
+
+def StartSubMenu():
     '''
     '''
-    
+    pass
+
+
+def EndSubMenu():
+    '''
+    '''
+    pass
