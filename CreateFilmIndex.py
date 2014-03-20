@@ -93,7 +93,7 @@ def IndexEverything(Index = None):
                                 </div>
                         </div>
                     </div>
-                </div>
+                
                 <div class="demo-frame">
                         <div id="toggleState">
                             <a class="expander"  href="#">Upload Files</a>
@@ -105,6 +105,7 @@ def IndexEverything(Index = None):
                                         <p><input type="submit" value="Upload"></p>
                                     </form>
                                 </div>
+                        </div>
                         </div>
                     </div>
             </div>
