@@ -105,7 +105,7 @@
         height : 75%;
     }
     #menu {
-        width: 20%;
+        width: 23%;
         height:86.8%; /* WHY inherit doesn't work?!?!?!?*/
         /* height: 100%; */
        
