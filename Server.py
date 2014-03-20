@@ -13,8 +13,7 @@ if scanDir is None:
 refDir = '/var/www'
 TheIndex = indexer.getIndex(scanDir, refDir)
 total = indexer.printIndex(TheIndex)
-indexer.store_index(TheIndex)   # Quite useless nut not a performance issue
-                                # output on the page of the script
+#indexer.store_index(TheIndex)   DELETE
 CreateFilmIndex.IndexEverything(TheIndex)
 
 print "Content-Type: text/html; charset=UTF-8"
