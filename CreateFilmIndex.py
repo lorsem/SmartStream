@@ -4,14 +4,15 @@ Load 'index.pkl' (MUST be in /var/www/cgi-bin) previously created with
 indexer.store_index().
 Create 'Tree' menu (not really good looking atm), with:
 Link to file: pass to ShowVideo.py two arguments: VidPath (RelPath to video)
-                                                 and VidName
-
-
+and VidName
 '''
+
 import pickle
 import cgi
 import cgitb
+
 cgitb.enable()
+
 
 def CreateNestedElements(TheFilms, IndexHtml):
     for Name in TheFilms.iterkeys():
@@ -33,20 +34,16 @@ def CreateNestedElements(TheFilms, IndexHtml):
                             <a href="{0}"><div class="videoImage">{1}</div></a>
                             '''.format('/cgi-bin/ShowVideo.py?VidPath={}&VidName={}'.format('/' + TheFilms[Name], Name),
                                        Name)
-                           )
-    
-def IndexEverything(Index = None):
-    if Index == None: 
-        Index = open ('index.pkl', 'rb')
-        TheFilms = pickle.load(Index)
-    else:
-        TheFilms = Index
-    IndexHtml = open ('/var/www/index.html', 'w')
+                            )
+
+
+def IndexEverything(Index='index.pkl'):
+    with open(Index, "rb") as pickleFile:
+        TheFilms = pickle.load(pickleFile)
+    IndexHtml = open('/var/www/index.html', 'w')
     #head part of page:
     IndexHtml.write(
-        '''
-    
-
+        '''\
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/PageStyle.css" />
@@ -61,26 +58,20 @@ def IndexEverything(Index = None):
     <title>SmartStream Home Page</title>
 </head>
 <body>
-    <div id="wrap"> 
+    <div id="wrap">
         <div id="header">
         <a href="/">
             <img src="/wallpapers/Logo.png" alt="SmartStream" /></a>
                 <div id="logo">
-    
                 </div>
         </div>
         <div id="body">
             <div id="list">
-                
-                
-                        
-                        
         ''')
     #Add all the nested content:
     CreateNestedElements(TheFilms, IndexHtml)
     #End the html tags as needed
     IndexHtml.write('''
-                   
             </div>
             <div id="menu">
                 <div id="list">
@@ -94,7 +85,7 @@ def IndexEverything(Index = None):
                                         <input name="scanDir" type="text"  />
                                         <br  />
                                         <input type="submit" value="submit">
-                                    </form> 
+                                    </form>
                                 </div>
                         </div>
                     </div>
@@ -109,6 +100,5 @@ def IndexEverything(Index = None):
 
 </html>
 ''')
-    #Close the index file 
+    #Close the index file
     IndexHtml.close()
-    
