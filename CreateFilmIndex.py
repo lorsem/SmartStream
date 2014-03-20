@@ -32,11 +32,13 @@ def CreateNestedElements(TheFilms, IndexHtml):
         else:
             IndexHtml.write('''
                             <a href="{0}"><div class="videoImage">{1}</div></a>
-                            '''.format('/cgi-bin/ShowVideo.py?VidPath={}&VidName={}'.format('/' + TheFilms[Name], Name),
-                                       Name)
-                            )
-
-
+                            '''.format('/cgi-bin/ShowVideo.py?VidPath=\
+                                       {}&VidName={}'.format('/' +
+                                                             TheFilms[Name],
+                                                             Name),
+                                                            Name)
+                           )
+            
 def IndexEverything(Index = None):
     if Index == None: 
         Index = open ('index.pkl', 'rb')
