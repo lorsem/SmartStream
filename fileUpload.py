@@ -26,10 +26,16 @@ if fileitem.filename:
    message = ''
    kbytes = 1024
    wbytes = 1024 * kbytes
-   i = 0 
+   i = 0
+   flag = 0
 while i<=int(os.getenv('CONTENT_LENGTH')) - 287: #287 undesrstood from tests ?!?!?
       wfile.write(fileitem.file.read(wbytes)) #Read 256 kbytes and write them(as    262144
-                                           #it works will increase n bytes)
+                                           #it works will increase n bytes
+      if flag >= 10:
+         wfile.flush()
+         flag = 0
+      else:
+         flag += 1
       i += wbytes
 else:
    message = 'The file "' + fn + '" was uploaded successfully to' + reldir
