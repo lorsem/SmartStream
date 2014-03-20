@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import cgi
 import os
 import cgitb
@@ -21,16 +22,16 @@ if fileitem.filename:
       os.makedirs(TargetDir)
    reldir = os.path.join (TargetDir, fn)
    file = open( reldir , 'wb')
-   while True:
-      try:
-         file.write(fileitem.file.read(128)) #Read 128 Bytes and write them(as
-                                                #it works will increase n bytes)
-      except EOFError:
-         message = 'The file "' + fn + '" was uploaded successfully to' + reldir
-         break
-      except Exception:
-         message = 'unknow ERROR'
-   
+   message = ''
+   wbytes = 262144
+   i = 0 
+while i<=int(os.getenv('CONTENT_LENGTH')) - 287: #287 undesrstood from tests ?!?!?
+      file.write(fileitem.file.read(wbytes)) #Read 256 kbytes and write them(as    262144
+                                           #it works will increase n bytes)
+      i += wbytes
+else:
+   message = 'The file "' + fn + '" was uploaded successfully to' + reldir
+      
 
 
 
@@ -72,7 +73,8 @@ print """
 <br><center><font color="White" size="4">Upload completed!  <br>
 {0}
 <br></font><font color="#FFFFFF" size="3">
-Uploaded to:  <b>{1}</b></font></center>
+Uploaded to:  <b>{1}</b>
+<br></font></center>
 <br>
 <br>
 <center>

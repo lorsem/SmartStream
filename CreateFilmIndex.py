@@ -100,7 +100,7 @@ def IndexEverything(Index = None):
                                 <div class="content">
                                       <form enctype="multipart/form-data" action="/cgi-bin/fileUploader.py" method="post">
                                         File: <input type="file" name="file"><br>
-                                        Path to Index (<i>Nothing</i> for default):
+                                        Hard Drive path (<i>Nothing</i> for root):
                                         <input name="dirName" type="text"  />
                                         <p><input type="submit" value="Upload"></p>
                                     </form>
