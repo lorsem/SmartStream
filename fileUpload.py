@@ -6,41 +6,41 @@ import cgitb
 import time
 
 cgitb.enable()
+
+
+# Generator to buffer file chunks
+def fbuffer(f, chunk_size=10000):
+   while True:
+      chunk = f.read(chunk_size)
+      if not chunk:
+         break
+      yield chunk
+
 start = time.time()
 form = cgi.FieldStorage()
 reldir = form.getfirst('dirName')
 if reldir is None:
-   reldir = ''   
+   reldir = ''
 # A nested FieldStorage instance holds the file
 fileitem = form['file']
 
-# Test if the file was uploaded
 if fileitem.filename:
    # strip leading path from file name to avoid directory traversal attacks
    fn = os.path.basename(fileitem.filename)
    TargetDir = os.path.join('/var/www/video', reldir)
-   if not os.path.isdir(TargetDir):
+   try:
       os.makedirs(TargetDir)
-   reldir = os.path.join (TargetDir, fn)
-   wfile = open( reldir , 'wb')
+   except OSError:
+        pass
+   DestDir = os.path.join (TargetDir, fn)
    message = ''
    kbytes = 1024
    wbytes = 1024 * kbytes
-   i = 0
-   flag = 0
-while i<=int(os.getenv('CONTENT_LENGTH')) - 287: #287 undesrstood from tests ?!?!?
-      wfile.write(fileitem.file.read(wbytes)) #Read 256 kbytes and write them(as    262144
-                                           #it works will increase n bytes
-      if flag >= 10:
-         wfile.flush()
-         flag = 0
-      else:
-         flag += 1
-      i += wbytes
-else:
-   message = 'The file "' + fn + '" was uploaded successfully to' + reldir
-      
-
+   wfile = open( DestDir  , 'wb', wbytes)
+   for chunk in fbuffer(fileitem.file):
+      wfile.write(chunk)
+   wfile.close()
+   message = 'The file "' + fn + '" was uploaded successfully to' + DestDir 
 
 end = time.time()
 print "Content-Type: text/html; charset=UTF-8"
@@ -89,7 +89,7 @@ Uploaded to:  <b>{1}</b>
 <font color="White" size="5">
 <a href="http://192.168.1.150/index.html"><b>HOME</b></a>
 </font><font color="White" size = "3">
-<br> Indexing took {2} seconds
+<br> Uploading took {2} seconds
 </font>
 </center>
 </center>
@@ -97,4 +97,4 @@ Uploaded to:  <b>{1}</b>
 </body>
 </html>
 
-""".format(message, reldir, end-start)
+""".format(message, DestDir , end-start)
