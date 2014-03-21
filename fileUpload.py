@@ -32,11 +32,12 @@ with form['file'].file as ifile:
    except OSError:
         pass
    DestDir = os.path.join (TargetDir, fn)
+   kbytes = 1024 
+   wbytes = 1024 * kbytes #Bytes = 1024*1024 = 1 MB
    wfile = open( DestDir  , 'wb', wbytes)
    while True:
       try:
-         wfile.write(ifile.read(1024) )
-         wfile.flush()
+         wfile.write(ifile.read(wbytes) )
       except EOFError:
          message = 'done'
          break
