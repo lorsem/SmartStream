@@ -22,8 +22,31 @@ reldir = form.getfirst('dirName')
 if reldir is None:
    reldir = ''
 # A nested FieldStorage instance holds the file
-fileitem = form['file']
+#fileitem = form['file']
 
+with form['file'].file as ifile:
+   fn = os.path.basename(ifile.name)
+   TargetDir = os.path.join('/var/www/video', reldir)
+   try:
+      os.makedirs(TargetDir)
+   except OSError:
+        pass
+   DestDir = os.path.join (TargetDir, fn)
+   wfile = open( DestDir  , 'wb', wbytes)
+   while True:
+      try:
+         wfile.write(ifile.read(1024) )
+         wfile.flush()
+      except EOFError:
+         message = 'done'
+         break
+      except Exception as message:
+         break
+      
+   
+
+'''
+fileitem = form['file'].file #USE THIS says reddit
 if fileitem.filename:
    # strip leading path from file name to avoid directory traversal attacks
    fn = os.path.basename(fileitem.filename)
@@ -41,6 +64,8 @@ if fileitem.filename:
       wfile.write(chunk)
    wfile.close()
    message = 'The file "' + fn + '" was uploaded successfully to' + DestDir 
+'''
+
 
 end = time.time()
 print "Content-Type: text/html; charset=UTF-8"
