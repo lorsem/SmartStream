@@ -23,9 +23,11 @@ if reldir is None:
    reldir = ''
 # A nested FieldStorage instance holds the file
 #fileitem = form['file']
-
+DestDir = 'null'
+'''
 with form['file'].file as ifile:
-   fn = os.path.basename(ifile.name)
+   fn = os.path.basename(ifile)
+   message = fn
    TargetDir = os.path.join('/var/www/video', reldir)
    try:
       os.makedirs(TargetDir)
@@ -47,7 +49,7 @@ with form['file'].file as ifile:
    
 
 '''
-fileitem = form['file'].file #USE THIS says reddit
+fileitem = form['file'] #USE THIS says reddit form['file'].file
 if fileitem.filename:
    # strip leading path from file name to avoid directory traversal attacks
    fn = os.path.basename(fileitem.filename)
@@ -65,7 +67,7 @@ if fileitem.filename:
       wfile.write(chunk)
    wfile.close()
    message = 'The file "' + fn + '" was uploaded successfully to' + DestDir 
-'''
+
 
 
 end = time.time()
@@ -105,7 +107,7 @@ print """
                 <div id="logo">
                 </div>
 <br><center><font color="White" size="4">Upload completed!  <br>
-{0}
+MSG:{0}
 <br></font><font color="#FFFFFF" size="3">
 Uploaded to:  <b>{1}</b>
 <br></font></center>
