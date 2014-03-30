@@ -46,6 +46,8 @@ DIR LISTING:
     for elem in dirDict.iterkeys():
         if elem.startswith('.'):
             continue
+        if elem == "lost+found":
+            continue
         # name = FALSE if not a movie, movie-name cleaned from extenion if a movie
         name = isMovie(elem)
         if name:
