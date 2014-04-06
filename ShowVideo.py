@@ -30,7 +30,10 @@ print '''
             <a href="/index.html"><font color="#8D8D8D"><font size="4">
             Film Index</font></font></a>
         </center>
-
+        <center>
+            <font color="#8D8D8D"><font size="3">
+            Video: {0}</font></font>
+        </center>
         <center>
             <video width="1280" height="720" controls autoplay poster="/wallpapers/loading.gif">
                 <source src="{1}">
