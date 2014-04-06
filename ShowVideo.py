@@ -43,4 +43,4 @@ print '''
         <br>
     </body>
 </html>
-'''.format(VidName, 'http://192.168.1.150' + Path)  # Double curled braces to escape python :)
+'''.format(VidName,  Path)  # Double curled braces to escape python :)  'http://192.168.1.150' +
