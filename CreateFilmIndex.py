@@ -15,7 +15,7 @@ cgitb.enable()
 
 
 def CreateNestedElements(TheFilms, IndexHtml):
-    for Name in TheFilms.iterkeys():
+    for Name in sorted(TheFilms.iterkeys()):
         if type(TheFilms[Name]) == dict:
             IndexHtml.write('''
                             <div class="demo-frame">
