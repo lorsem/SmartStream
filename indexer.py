@@ -2,6 +2,7 @@
 
 import os
 import pickle
+import difflib
 
 def isMovie(filename):
     """
@@ -24,6 +25,41 @@ def store_index(index):
     except IOError:
         return False, "No such file"
 
+def prettifyName(elems): ######NOT WORKING!!! Work in progress!
+    temp = None
+    commonParts = list()
+    for key in elems.iterkeys():
+        if key.startswith('.') | (key == 'lost+found'):
+            continue
+        if type(key) is dict:
+            prettifyName(key)
+            continue
+        elif not (type(key) is dict):
+            if not isMovie(key):
+                continue
+            if temp is None:
+                temp = key
+                continue
+            elif temp != key:
+                temp, key = temp.replace('.', ' ') , key.replace('.', ' ')
+                commonParts = [x.replace(' ', '') for x in difflib.Differ().compare(temp.split(' '), key.split(' ')) if ( (x[0]!='+') & (x[0] != '-'))]
+            newkey = key[:]
+            for x in commonParts:
+                newkey = newkey.replace(x, '')
+            while newkey[0] == ' ':
+                newkey = newkey[1:]
+            elems[newkey] = elems[key]
+            del elems[key]
+        #else:
+        #    newkey = temp[:]
+        #    for x in commonParts:
+        #        newkey = newkey.replace(x, '')
+        #    try:
+        #        elems[newkey.replace(' ', '', 1)] = elems.pop(temp)
+        #    except:
+        #        pass
+                
+
 
 def getIndex(scanDir, refDir):
     """
@@ -38,16 +74,20 @@ DIR LISTING:
     and what's not we call os.path.isdir(d) where d MUST be a path, not just the name of a directory.
     
     dirDict is a dictionary: key = name, value = abs path
+    
+    Dictionary: {folder1 : { folder2 { filmname : filmpath, filmname2 : filmpath2 } } }
+
 
     """
     index = {}
     # dirDict is a dictionary mapping names of elements in scanDir to abs path
     dirDict = {key : os.path.join(scanDir, key) for key in os.listdir(scanDir)}
+#######    prettifyName(dirDict) #NOT WORKING - disable to test
     for elem in dirDict.iterkeys():
         if elem.startswith('.'):
             continue
         if elem == "lost+found":
-            continue
+            continue        
         # name = FALSE if not a movie, movie-name cleaned from extenion if a movie
         name = isMovie(elem)
         if name:
