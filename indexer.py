@@ -81,10 +81,10 @@ DIR LISTING:
     """
     index = {}
     # dirDict is a dictionary mapping names of elements in scanDir to abs path
-    dirDict = {key : os.path.join(scanDir, key) for key in os.listdir(scanDir)}
+    dirDict = {key : os.path.join(scanDir, key) for key in os.listdir(scanDir) if not key.startswith('.')}
 #######    prettifyName(dirDict) #NOT WORKING - disable to test
     for elem in dirDict.iterkeys():
-        if elem.startswith('.'):
+        if elem.startswith('.'): #Redundant, just in case..
             continue
         if elem == "lost+found":
             continue        
