@@ -74,7 +74,7 @@ def CountFiles(index):
     total = 0
     for key in index.iterkeys(): # A list of sorted keys
         if type(index[key]) is dict:
-            total += printIndex(index[key])
+            total += CountFiles(index[key])
         else:
             total += 1
     return total
