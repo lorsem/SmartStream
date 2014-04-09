@@ -109,9 +109,6 @@ def IndexEverything(Index = None):
                         </div>
                     </div>
             </div>
-            <div id="footer">
-                <b>Footer</b>
-            </div>
         </div>
     </div>
     </body>

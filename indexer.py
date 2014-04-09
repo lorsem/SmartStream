@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 import os
 import pickle
 import difflib
@@ -24,41 +25,7 @@ def store_index(index):
             pickle.dump(index, output)
     except IOError:
         return False, "No such file"
-
-def prettifyName(elems): ######NOT WORKING!!! Work in progress!
-    temp = None
-    commonParts = list()
-    for key in elems.iterkeys():
-        if key.startswith('.') | (key == 'lost+found'):
-            continue
-        if type(key) is dict:
-            prettifyName(key)
-            continue
-        elif not (type(key) is dict):
-            if not isMovie(key):
-                continue
-            if temp is None:
-                temp = key
-                continue
-            elif temp != key:
-                temp, key = temp.replace('.', ' ') , key.replace('.', ' ')
-                commonParts = [x.replace(' ', '') for x in difflib.Differ().compare(temp.split(' '), key.split(' ')) if ( (x[0]!='+') & (x[0] != '-'))]
-            newkey = key[:]
-            for x in commonParts:
-                newkey = newkey.replace(x, '')
-            while newkey[0] == ' ':
-                newkey = newkey[1:]
-            elems[newkey] = elems[key]
-            del elems[key]
-        #else:
-        #    newkey = temp[:]
-        #    for x in commonParts:
-        #        newkey = newkey.replace(x, '')
-        #    try:
-        #        elems[newkey.replace(' ', '', 1)] = elems.pop(temp)
-        #    except:
-        #        pass
-                
+              
 
 
 def getIndex(scanDir, refDir):
@@ -81,8 +48,9 @@ DIR LISTING:
     """
     index = {}
     # dirDict is a dictionary mapping names of elements in scanDir to abs path
-    dirDict = {key : os.path.join(scanDir, key) for key in os.listdir(scanDir) if not key.startswith('.')}
-#######    prettifyName(dirDict) #NOT WORKING - disable to test
+    dirDict = {key : os.path.join(scanDir, key) for key in os.listdir(scanDir) \
+                        if not( key.startswith('.')   |   (key == 'lost+found') )}
+    ###prettifyName(dirDict) #NOT WORKING - disable to test
     for elem in dirDict.iterkeys():
         if elem.startswith('.'): #Redundant, just in case..
             continue
