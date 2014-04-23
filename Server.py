@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+
+from __future__ import print_function
 import cgi
 import time
 import cgitb
@@ -18,8 +20,8 @@ total = indexer.printIndex(TheIndex)
 #indexer.store_index(TheIndex)   DELETE
 CreateFilmIndex.IndexEverything(TheIndex)
 end = time.time()
-print "Content-Type: text/html; charset=UTF-8"
-print '''
+print ("Content-Type: text/html; charset=UTF-8")
+print ('''
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/PageStyle.css" />
@@ -69,4 +71,4 @@ Searched <b>{1}</b></font></center>
 <br>
 </body>
 </html>
-'''.format(str(total), scanDir, end-start)  # TheIndex
+'''.format(str(total), scanDir, end-start))  # TheIndex

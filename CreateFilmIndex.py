@@ -10,6 +10,7 @@ and VidName
 import pickle
 import cgi
 import cgitb
+cgi.StringIO()
 
 cgitb.enable()
 
@@ -22,7 +23,8 @@ def CreateNestedElements(TheFilms, IndexHtml):
                                 <div id="toggleState">
                                     <a class="expander"  href="#">{}</a>
                                         <div class="content">
-                            '''.format(Name))
+                            '''.format(Name)
+                           )
             CreateNestedElements(TheFilms[Name], IndexHtml)
             IndexHtml.write('''
                                         </div>
@@ -35,7 +37,8 @@ def CreateNestedElements(TheFilms, IndexHtml):
                             '''.format('/cgi-bin/ShowVideo.py?VidPath={}&VidName={}'.format('/' +
                                                              TheFilms[Name],
                                                              Name),
-                                                            Name)
+                                                            Name
+                                       )
                            )
             
 def IndexEverything(Index = None):
@@ -47,7 +50,10 @@ def IndexEverything(Index = None):
     IndexHtml = open('/var/www/index.html', 'w')
     #head part of page:
     IndexHtml.write(
+        
         '''\
+Content-Type: text/html; charset=UTF-8
+        
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/PageStyle.css" />

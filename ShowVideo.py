@@ -24,6 +24,7 @@ print '''
             body {{background-color:black;
                     background-image:none}}
         </style>
+        <title>SmartStream::Playback</title>
     </head>
     <body>
         <center>
@@ -35,7 +36,7 @@ print '''
             Video: {0}</font></font>
         </center>
         <center>
-            <video width="1280" height="720" controls autoplay poster="/wallpapers/loading.gif">
+            <video width="1280" height="720" controls poster="/wallpapers/loading.gif">
                 <source src="{1}">
             </video>
         </center>
