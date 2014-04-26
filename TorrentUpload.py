@@ -19,16 +19,15 @@ for n in range(100):
     try:
         fileitem = form['file'][n] #USE THIS says reddit form['file'].file
     except:
-        message += 'EXCEPTION'
         break
     if fileitem.filename:   
        # strip leading path from file name to avoid directory traversal attacks
        fn = os.path.basename(fileitem.filename)
        with open( '/home/pi/NewTorrents/' + fn , 'wb') as wfile:
           wfile.write(fileitem.file.read())
-       message += 'Upload [{}] Successful! <br>'.format(n)
+       message += 'Upload {} Successful! <br>'.format(n+1)
     else:
-       message += 'Upload [{}] failed! :-(<br>'.format(n)
+       message += 'Upload {} failed! :-(<br>'.format(n+1)
 end = time.time()
 print "Content-Type: text/html; charset=UTF-8"
 print """
