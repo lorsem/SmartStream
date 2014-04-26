@@ -12,19 +12,23 @@ cgitb.enable()
 
 start = time.time()
 form = cgi.FieldStorage()
-
+message = str()
 # A nested FieldStorage instance holds the file
 #fileitem = form['file']
-
-fileitem = form['file'] #USE THIS says reddit form['file'].file
-if fileitem.filename:   
-   # strip leading path from file name to avoid directory traversal attacks
-   fn = os.path.basename(fileitem.filename)
-   with open( '/home/pi/NewTorrents/' + fn , 'wb') as wfile:
-      wfile.write(fileitem.file.read())
-   message = 'Upload Successful!'
-else:
-   message = 'Upload failed! :-('
+for n in range(100):
+    try:
+        fileitem = form['file'][n] #USE THIS says reddit form['file'].file
+    except:
+        message += 'EXCEPTION'
+        break
+    if fileitem.filename:   
+       # strip leading path from file name to avoid directory traversal attacks
+       fn = os.path.basename(fileitem.filename)
+       with open( '/home/pi/NewTorrents/' + fn , 'wb') as wfile:
+          wfile.write(fileitem.file.read())
+       message += 'Upload [{}] Successful! <br>'.format(n)
+    else:
+       message += 'Upload [{}] failed! :-(<br>'.format(n)
 end = time.time()
 print "Content-Type: text/html; charset=UTF-8"
 print """

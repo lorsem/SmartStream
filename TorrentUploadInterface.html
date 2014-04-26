@@ -1,0 +1,21 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="PageStyle.css" />
+    <link rel="SHORTCUT ICON" HREF="wallpapers/icon_small.png">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="ExpandCollapse.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.expander').simpleexpand();
+        });
+    </script>
+    <title>SmartStream Torrent Upload Interface</title>
+</head>
+
+<body>
+    <form enctype="multipart/form-data" action="/cgi-bin/TorrentUpload.py" method="post">
+                                        <font color = White>Torrent File: </font><input type="file" name="file" multiple ><br>
+                                        <p><input type="submit" value="Upload"></p>
+                                    </form>
+</body>
+</html>i
