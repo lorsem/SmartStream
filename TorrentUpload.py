@@ -11,23 +11,30 @@ cgitb.enable()
 # Generator to buffer file chunks
 
 start = time.time()
+uploadFlag = 0
 form = cgi.FieldStorage()
 message = str()
 # A nested FieldStorage instance holds the file
 #fileitem = form['file']
 for n in range(100):
     try:
-        fileitem = form['file'][n] #USE THIS says reddit form['file'].file
+        fileitem = form['file'][n] #USE THIS says reddit form['file'].fil
+    except TypeError:
+        if uploadFlag == 0:
+            uploadFlag = 1
+            fileitem = form['file']
+        else:
+            break
     except:
         break
-    if fileitem.filename:   
-       # strip leading path from file name to avoid directory traversal attacks
-       fn = os.path.basename(fileitem.filename)
-       with open( '/home/pi/NewTorrents/' + fn , 'wb') as wfile:
-          wfile.write(fileitem.file.read())
-       message += 'Upload {} Successful! <br>'.format(n+1)
+    if fileitem.filename:
+        # strip leading path from file name to avoid directory traversal attacks
+        fn = os.path.basename(fileitem.filename)
+        with open( '/home/pi/NewTorrents/' + fn , 'wb') as wfile:
+            wfile.write(fileitem.file.read())
+        message += 'Upload {} Successful! <br>'.format(n+1)
     else:
-       message += 'Upload {} failed! :-(<br>'.format(n+1)
+        message += 'Upload {} failed! :-(<br>'.format(n+1)
 end = time.time()
 print "Content-Type: text/html; charset=UTF-8"
 print """
