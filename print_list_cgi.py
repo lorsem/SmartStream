@@ -4,6 +4,8 @@ import cgitb
 cgitb.enable()
 import pickle
 
+# Probably used for debugging, now useless.
+
 
 def load_index(file_name="index.pkl"):
     try:
