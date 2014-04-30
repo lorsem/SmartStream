@@ -7,12 +7,16 @@ import cgi
 import cgitb
 
 cgitb.enable()
-
-Fields = cgi.FieldStorage()
-PartialPath = Fields.getvalue('VidPath')
-VidName = Fields.getvalue('VidName')
+# Html5-embedded videos are played using the default browser player.
+# It may be a problem: on MacOS, i couldn't find a plugin to play some videos
+# properly (no audio or nothing at all). See bottom of this file and Show__Beta
+# for an alternative solution (will soon merge the two of them :) )
+Fields = cgi.FieldStorage() # Get data from POST form
+# Get the path (/var/www already took away) and the name of the video
+PartialPath = Fields.getvalue('VidPath')    
+VidName = Fields.getvalue('VidName')       
 Path = PartialPath
-
+# Output html page 
 print "Content-Type: text/html; charset=UTF-8"
 print ''
 print '''
@@ -44,4 +48,6 @@ print '''
         <br>
     </body>
 </html>
-'''.format(VidName,  Path)  # Double curled braces to escape python :)  'http://192.168.1.150' +
+'''.format(VidName,  Path)  # Double curled braces to escape python :)
+# See Show__Beta for a vlc-plugin enabled version (works great on linux but not
+#   on MacOS). Not tested on windows
