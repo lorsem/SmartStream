@@ -5,8 +5,15 @@ embedded in HTML5. The VidName is needed only to have a better output.
 '''
 import cgi
 import cgitb
+## Please see also ShowVideo.py
 
 cgitb.enable()
+# This version of the ShowVideo uses vlc browser plugin. It works great, if you
+# have the plugin. To date (30/04/2014) there is none available for MacOS, which
+# I use. On linux (and likely Windows) it should work like a charm (on linux it
+# does...).
+# This version will soon be used alongside the other one. Vhoice will be given
+# as to which method use: html5 video tag or vlc plugin object
 
 Fields = cgi.FieldStorage()
 PartialPath = Fields.getvalue('VidPath')
@@ -56,7 +63,7 @@ print '''
 
 
 
-
+###Stub things below.. 
 #
 #
 #
