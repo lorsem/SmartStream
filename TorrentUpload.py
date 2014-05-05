@@ -85,7 +85,7 @@ print """
 <br>
 <center>
 <font color="White" size="5">
-<a href="http://192.168.1.150/index.html"><b>HOME</b></a>
+<a href="/index.html"><b>HOME</b></a>
 </font><font color="White" size = "3">
 <br> Uploading took {1} seconds
 </font>
