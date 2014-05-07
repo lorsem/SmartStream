@@ -16,11 +16,15 @@ scanDir = form.getfirst("scanDir")   # Pull scanDir: the directory that will be 
 Index = open('/var/www/list_of_films.txt', 'w')
 if scanDir is None: # If it is None, nothing has been inserted by the user, which stands for default
     scanDir = '/var/www/video'
-refDir = '/var/www' # The files MUST be in a subdirectory of the website.
-# The root of the website is /var/www, hence it is the "starting point" of every link
-TheIndex = indexer.getIndex(scanDir, refDir) # Returns a dictionary {directory : { name : path}}
-total = indexer.CountFiles(TheIndex)    # Counts how many films we have found
-CreateFilmIndex.IndexEverything(TheIndex)   # Creates index.html
+# The files MUST be in a subdirectory of the website.
+refDir = '/var/www' # The root of the website is /var/www, hence it is the
+                    # "starting point" of every link
+
+# Returns a dictionary {directory : { name : path}} :
+TheIndex = indexer.getIndex(scanDir, refDir)
+
+total = indexer.CountFiles(TheIndex)         # Counts how many films we have found
+CreateFilmIndex.IndexEverything(TheIndex)    # Creates index.html
 end = time.time()
 print ("Content-Type: text/html; charset=UTF-8")
 # NOTE: in following css I used double '{' to escape them since I also use {} for
@@ -75,4 +79,4 @@ Searched <b>{1}</b></font></center>
 <br>
 </body>
 </html>
-'''.format(str(total), scanDir, str(end-start)))  # TheIndex
+'''.format(str(total), scanDir, str(end-start))) 
