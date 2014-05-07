@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 '''
-Load 'index.pkl' (MUST be in /var/www/cgi-bin) previously created with
-indexer.store_index().
-Create 'Tree' menu (not really good looking atm), with:
-Link to file: pass to ShowVideo.py two arguments: VidPath (RelPath to video)
-and VidName
+The core is IndexEverything. It is passed a dictionary or opens a pickle-ed file
+if no dictiornary is passed.
+
+Then it creates a nested menu with directories/films. Links to film are calls to
+ShowVideo (will add option to set default to ShowVideo OR ShowVideo_vlc)
+
+
 '''
 
 import pickle
@@ -28,8 +30,8 @@ def CreateNestedElements(TheFilms, IndexHtml):
             CreateNestedElements(TheFilms[Name], IndexHtml)
             IndexHtml.write('''
                                         </div>
-                                    </div>
                                 </div>
+                            </div>
                             ''')
         else:
             IndexHtml.write('''
@@ -40,9 +42,9 @@ def CreateNestedElements(TheFilms, IndexHtml):
                                                             Name
                                        )
                            )
-            
+
 def IndexEverything(Index = None):
-    if Index == None: 
+    if Index == None:
         Index = open ('index.pkl', 'rb')
         TheFilms = pickle.load(Index)
     else:
@@ -50,9 +52,9 @@ def IndexEverything(Index = None):
     IndexHtml = open('/var/www/index.html', 'w')
     #head part of page:
     IndexHtml.write(
-        
+
         '''\
-        
+
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/PageStyle.css" />
@@ -77,8 +79,11 @@ def IndexEverything(Index = None):
         <div id="body">
             <div id="list">
         ''')
+
     #Add all the nested content:
+    # Here happens everything!
     CreateNestedElements(TheFilms, IndexHtml)
+
     #End the html tags as needed
     IndexHtml.write('''
             </div>
@@ -98,7 +103,7 @@ def IndexEverything(Index = None):
                                 </div>
                         </div>
                     </div>
-                
+
                 <div class="demo-frame">
                         <div id="toggleState">
                             <a class="expander"  href="#">Upload Files</a>
