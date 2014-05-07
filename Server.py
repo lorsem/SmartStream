@@ -23,6 +23,8 @@ total = indexer.CountFiles(TheIndex)    # Counts how many films we have found
 CreateFilmIndex.IndexEverything(TheIndex)   # Creates index.html
 end = time.time()
 print ("Content-Type: text/html; charset=UTF-8")
+# NOTE: in following css I used double '{' to escape them since I also use {} for
+# .format method!
 print ('''
 <html>
 <head>
