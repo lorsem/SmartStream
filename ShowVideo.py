@@ -1,16 +1,19 @@
 #!/usr/bin/python
-'''
-Given a relative path (relative to the root of the website), the video is nicely
-embedded in HTML5. The VidName is needed only to have a better output.
-'''
+
+# Given a relative path (relative to the root of the website), the video is nicely
+# embedded in HTML5. The VidName is needed only to have a better output.
+#
+# NOTE: working also on embedding vlc-plugin object: see ShowVideo_vlc !
+
 import cgi
 import cgitb
 
 cgitb.enable()
 # Html5-embedded videos are played using the default browser player.
-# It may be a problem: on MacOS, i couldn't find a plugin to play some videos
-# properly (no audio or nothing at all). See bottom of this file and Show__Beta
-# for an alternative solution (will soon merge the two of them :) )
+#   It may be a problem: on MacOS, i couldn't find a plugin to play some videos
+#   properly (no audio or nothing at all). See bottom of this file and
+#   Show__Beta->ShowVideo_vlc for an alternative solution (will soon merge the
+#   two of them :) )
 Fields = cgi.FieldStorage() # Get data from POST form
 # Get the path (/var/www already took away) and the name of the video
 PartialPath = Fields.getvalue('VidPath')
