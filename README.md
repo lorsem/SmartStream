@@ -32,10 +32,10 @@ When plugged in, the HD is searched for videos. An index is created without movi
 The indexing will likely be implemented in a Python script, run on the server when needed. Files will be embedded in HTML5. Conversion won't be possible due to the RP's limited computing capabilities. HTML5 videos can be any format and will be played as long as the default player (e.g. QuickTime on Macs) supports the format. If the user chooses to play the film on HDMI, the RP should play the video through the HDMI port.
 
 ### Main page features
-On the main page it will be possible to:
-- Select a movie from the index -> stream on web browser or through HDMI
-- Upload or remove a movie
-- Manually organize data on HD -> rename, move, copy, upload, remove (kind of like DropBox)
+On the main page it is possible to:
+- Select one video to watch from Finder-like file system browsing
+- Trigger the indexing/re-indexing of videos
+- Upload or remove a movie (works but problems with big files! )
 
 The index is always going to be updated to list ALL the movies. If needed indexing can be set to operate on a specific directory, for example "Films", in case you have other videos you don't want to be indexed on the main page (e.g. porn)
 
@@ -44,9 +44,10 @@ Supported video extensions: ('.wmv', '.mov', '.mpg', '.avi', '.mp4', '.mkv', 'm4
 
 ### TODO
 * HDMI-output: maybe use something like os.system('/bin/vlc "MyVideo.mkv" ')
+* Manually organize data on HD -> rename, move, copy, upload, remove (kind of like DropBox)
 
 ### Easy setup
-The server itself is default Apache 2. You need the videos to be in /var/www/video or in subdirs of this directory.
+The server itself is default **Apache 2**. You need the videos to be in */var/www/video* or in subdirs of this directory.
 I'm using a RaspberryPi and stored all the media in one external drive, mounted in /media/HDD. I set /var/www/video
-to be a soft link to /media/HDD and set Apache to follow symlinks. I left everything default, only changes I made
-are permissions. It should be easy-peasy to recreate the same server at home. 
+to be a soft link to */media/HDD* and set Apache to follow symlinks. I left everything default, only changes I made
+are permissions. It should be easy-peasy to recreate the same server at home.
