@@ -1,13 +1,9 @@
 #!/usr/bin/env python
-'''
-The core is IndexEverything. It is passed a dictionary or opens a pickle-ed file
-if no dictiornary is passed.
 
-Then it creates a nested menu with directories/films. Links to film are calls to
-ShowVideo (will add option to set default to ShowVideo OR ShowVideo_vlc)
-
-
-'''
+# The core of this script is IndexEverything. It is passed a dictionary or opens
+#   a pickle-ed file if no dictiornary is passed(WARING: deprecated!). Then it
+#   creates a nested menu    with directories/films. Links to film are calls to
+#   ShowVideo (will add   option to set default to ShowVideo OR ShowVideo_vlc)
 
 import pickle
 import cgi
@@ -19,7 +15,10 @@ cgitb.enable()
 
 def CreateNestedElements(TheFilms, IndexHtml):
     for Name in sorted(TheFilms.iterkeys()):
+        # If it is a directory on the filesystem, it is a dictionary in our
+        #   abstraction
         if type(TheFilms[Name]) == dict:
+            # Head of html for js Finder-like folders ('|> Folder' in Html output)
             IndexHtml.write('''
                             <div class="demo-frame">
                                 <div id="toggleState">
@@ -27,13 +26,14 @@ def CreateNestedElements(TheFilms, IndexHtml):
                                         <div class="content">
                             '''.format(Name)
                            )
+            # Recursively calls itself for every nested directory
             CreateNestedElements(TheFilms[Name], IndexHtml)
             IndexHtml.write('''
                                         </div>
                                 </div>
                             </div>
                             ''')
-        else:
+        else:   # If it is a file, treat it correctly.
             IndexHtml.write('''
                             <a href="{0}"><div class="videoImage">{1}</div></a>
                             '''.format('/cgi-bin/ShowVideo.py?VidPath={}&VidName={}'.format('/' +
@@ -44,10 +44,10 @@ def CreateNestedElements(TheFilms, IndexHtml):
                            )
 
 def IndexEverything(Index = None):
-    if Index == None:
+    if Index == None:    # Now deprecated, useful (maybe) for debugging
         Index = open ('index.pkl', 'rb')
         TheFilms = pickle.load(Index)
-    else:
+    else:    # If an index is passed to the function, it must be used!
         TheFilms = Index
     IndexHtml = open('/var/www/index.html', 'w')
     #head part of page:
