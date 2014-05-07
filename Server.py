@@ -6,9 +6,10 @@ import time
 import cgitb
 import indexer          # Actual indexing and sorting
 import CreateFilmIndex  # Creation of index.html page (on server)
-
+#############
 # This program is the core of the "search+index files" part
 # See index.html for an example
+#############
 start = time.time()
 cgitb.enable()                        # Retrieve form fields
 form = cgi.FieldStorage()	         # Get POST data
