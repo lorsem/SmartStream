@@ -75,4 +75,4 @@ Searched <b>{1}</b></font></center>
 <br>
 </body>
 </html>
-'''.format(str(total), scanDir, end-start))  # TheIndex
+'''.format(str(total), scanDir, str(end-start)))  # TheIndex
