@@ -1,7 +1,8 @@
 #!/usr/bin/python
 '''
 Given a relative path (relative to the root of the website), the video is nicely
-embedded in HTML5. The VidName is needed only to have a better output.
+embedded in a vlc-object which is opened w/ vlc plugin.
+The VidName is needed only to have a better output.
 '''
 import cgi
 import cgitb
@@ -57,20 +58,4 @@ print '''
         <br>
     </body>
 </html>
-'''.format(VidName,  Path)  # Double curled braces to escape python :)  'http://192.168.1.150' +
-
-
-
-
-
-###Stub things below..
-#
-#
-#
-#<object type="application/videolan-vlc" data="{1}" width="1280" height="720" id="Video">
-#     <param name="movie" value="{1}"/>
-#     <embed type="application/videolan-vlc" name="video1"
-#     autoplay="no" loop="no" width="1280" height="720"
-#     target="{1}" />
-#     <a href="{1}">Download Video1</a>
-#</object>
+'''.format(VidName,  Path)  # Double curled braces to escape python :) 
