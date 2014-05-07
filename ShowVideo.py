@@ -13,10 +13,10 @@ cgitb.enable()
 # for an alternative solution (will soon merge the two of them :) )
 Fields = cgi.FieldStorage() # Get data from POST form
 # Get the path (/var/www already took away) and the name of the video
-PartialPath = Fields.getvalue('VidPath')    
-VidName = Fields.getvalue('VidName')       
+PartialPath = Fields.getvalue('VidPath')
+VidName = Fields.getvalue('VidName')
 Path = PartialPath
-# Output html page 
+# Output html page
 print "Content-Type: text/html; charset=UTF-8"
 print ''
 print '''
@@ -37,17 +37,22 @@ print '''
         </center>
         <center>
             <font color="#8D8D8D"><font size="3">
-            Video: {0}</font></font>
+            Video: {vname}</font></font>
         </center>
         <center>
             <video width="1280" height="720" controls poster="/wallpapers/loading.gif">
-                <source src="{1}">
+                <source src="{vpath}">
             </video>
         </center>
 
         <br>
+        <a href="/cgi-bin/ShowVideo_vlc.py?VidPath={vpath}&VidName={vname}">
+            <font color="#8D8D8D"><font size="4">
+                Open using VLC plugin
+            </font></font>
+        </a>
     </body>
 </html>
-'''.format(VidName,  Path)  # Double curled braces to escape python :)
+'''.format(vname=VidName,  vpath=Path)  # Double curled braces to escape python :)
 # See Show__Beta for a vlc-plugin enabled version (works great on linux but not
 #   on MacOS). Not tested on windows

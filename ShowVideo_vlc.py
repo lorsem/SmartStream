@@ -12,7 +12,7 @@ cgitb.enable()
 # have the plugin. To date (30/04/2014) there is none available for MacOS, which
 # I use. On linux (and likely Windows) it should work like a charm (on linux it
 # does...).
-# This version will soon be used alongside the other one. Vhoice will be given
+# This version will soon be used alongside the other one. Choice will be given
 # as to which method use: html5 video tag or vlc plugin object
 
 Fields = cgi.FieldStorage()
@@ -63,7 +63,7 @@ print '''
 
 
 
-###Stub things below.. 
+###Stub things below..
 #
 #
 #
