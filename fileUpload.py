@@ -9,12 +9,14 @@ cgitb.enable()
 
 
 # Generator to buffer file chunks
+# NOTE: at the moment, it is useless because Apache will first download the file
+#   and the pass it to the script. Trying to figure out an easy workaround
 def fbuffer(f, chunk_size=10000):
-   while True:
-      chunk = f.read(chunk_size)
-      if not chunk:
-         break
-      yield chunk
+    while True:
+        chunk = f.read(chunk_size)
+            if not chunk:
+                break
+            yield chunk
 
 start = time.time()
 form = cgi.FieldStorage()
@@ -22,8 +24,8 @@ reldir = form.getfirst('dirName')
 if reldir is None:
    reldir = ''
 # A nested FieldStorage instance holds the file
-#fileitem = form['file']
-DestDir = 'null'
+# fileitem = form['file']
+DestDir = 'null' # Just for debugging, it is initialized to a proper value later
 '''
 with form['file'].file as ifile:
    fn = os.path.basename(ifile)
@@ -34,7 +36,7 @@ with form['file'].file as ifile:
    except OSError:
         pass
    DestDir = os.path.join (TargetDir, fn)
-   kbytes = 1024 
+   kbytes = 1024
    wbytes = 1024 * kbytes #Bytes = 1024*1024 = 1 MB
    wfile = open( DestDir  , 'wb', wbytes)
    while True:
@@ -45,28 +47,28 @@ with form['file'].file as ifile:
          break
       except Exception as message:
          break
-      
-   
+
+
 
 '''
 fileitem = form['file'] #USE THIS says reddit form['file'].file
 if fileitem.filename:
-   # strip leading path from file name to avoid directory traversal attacks
-   fn = os.path.basename(fileitem.filename)
-   TargetDir = os.path.join('/var/www/video', reldir)
-   try:
-      os.makedirs(TargetDir)
-   except OSError:
+    # strip leading path from file name to avoid directory traversal attacks
+    fn = os.path.basename(fileitem.filename)
+    TargetDir = os.path.join('/var/www/video', reldir)
+    try:
+        os.makedirs(TargetDir)
+    except OSError:
         pass
-   DestDir = os.path.join (TargetDir, fn)
-   message = ''
-   kbytes = 1024
-   wbytes = 1024 * kbytes
-   wfile = open( DestDir  , 'wb', wbytes)
-   for chunk in fbuffer(fileitem.file):
-      wfile.write(chunk)
-   wfile.close()
-   message = 'The file "' + fn + '" was uploaded successfully to' + DestDir 
+    DestDir = os.path.join (TargetDir, fn)
+    message = ''
+    kbytes = 1024
+    wbytes = 1024 * kbytes
+    wfile = open( DestDir  , 'wb', wbytes)
+    for chunk in fbuffer(fileitem.file):
+        wfile.write(chunk)
+    wfile.close()
+    message = 'The file "' + fn + '" was uploaded successfully to' + DestDir
 
 
 
