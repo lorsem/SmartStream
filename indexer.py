@@ -11,7 +11,7 @@ def isMovie(filename):
 
     videoExtensions = ('.wmv', '.mov', '.mpg', '.avi', '.mp4', '.mkv', 'm4v',
                        '.flv')  # Tuple containing supported video extensions
-    # os.path.splitext() splits a string separating a .extension
+    # os.path.splitext() splits a string separating a 'filename' and 'ext'
     name, ext = os.path.splitext(filename)
     if ext in videoExtensions:
         return name

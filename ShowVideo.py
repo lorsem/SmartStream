@@ -49,11 +49,13 @@ print '''
         </center>
 
         <br>
-        <a href="/cgi-bin/ShowVideo_vlc.py?VidPath={vpath}&VidName={vname}">
-            <font color="#8D8D8D"><font size="4">
-                Open using VLC plugin
-            </font></font>
-        </a>
+        <center>
+            <a href="/cgi-bin/ShowVideo_vlc.py?VidPath={vpath}&VidName={vname}">
+                <font color="#8D8D8D"><font size="4">
+                    Open using VLC plugin
+                </font></font>
+            </a>
+        </center>
     </body>
 </html>
 '''.format(vname=VidName,  vpath=Path)  # Double curled braces to escape python :)
