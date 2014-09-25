@@ -63,13 +63,18 @@ Place the python scripts in /var/www/cgi-bin and make them executable
 
 <code>
 mkdir cgi-bin
+</code>
 
+<code>
 mv *py cgi-bin
+</code>
 
+<code>
 cd cgi-bin
+</code>
 
+<code>
 chmod +x *py
-
 </code>
 
 Create the directory "video" scanned by the indexer
