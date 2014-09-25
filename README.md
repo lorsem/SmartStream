@@ -55,30 +55,21 @@ are permissions. It should be easy-peasy to recreate the same server at home.
 ### Complete guide for Raspberry pi
 First of all install apache2:
 
-<code>sudo apt-get install apache2 -y</code>
+'sudo apt-get install apache2 -y'
 
-Now copy all the stuf in /var/www (ovverrdie index.html)
+Now copy all the stuf in '/var/www' (ovverrdie index.html)
 
-Place the python scripts in /var/www/cgi-bin and make them executable
+Place the python scripts in '/var/www/cgi-bin' and make them executable
 
-<code>
+'''
 mkdir cgi-bin
-</code>
-
-<code>
 mv *py cgi-bin
-</code>
-
-<code>
 cd cgi-bin
-</code>
-
-<code>
 chmod +x *py
-</code>
+'''
 
 Create the directory "video" scanned by the indexer
-<code>mkdir /var/www/video</code>
+'mkdir /var/www/video'
 
 Set apache2 to use the pythons scripts in cgi-bin
 
