@@ -80,7 +80,7 @@ Create the directory "video", here is where you are going to put the video Smart
 mkdir /var/www/video
 ```
 
-Set apache2 to use the pythons scripts in cgi-bin: you can copy Loresem config file:
+Set apache2 to use the pythons scripts in cgi-bin: you can copy Loresem config file, or follow instructions at this link: http://bdhacker.wordpress.com/2011/05/21/running-your-first-cgi-program-with-apache2/
 
 Here is Loresem `/etc/apache2/sites-enabled/000-default` , the config file you need to modify to make cgi python scripts work
 
