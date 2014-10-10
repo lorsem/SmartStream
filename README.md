@@ -84,9 +84,9 @@ If you want to make the soft link  here is an example (from HDD)
 ```shell
 sudo ln -s /media/SmartStream/video /var/www/video
 ```
-Set apache2 to use the pythons scripts in cgi-bin: you can copy Loresem config file, or follow instructions at this link: http://bdhacker.wordpress.com/2011/05/21/running-your-first-cgi-program-with-apache2/
+Set apache2 to use the pythons scripts in cgi-bin: you can copy Lorsem config file, or follow instructions at this link: http://bdhacker.wordpress.com/2011/05/21/running-your-first-cgi-program-with-apache2/
 
-Here is Loresem `/etc/apache2/sites-enabled/000-default` , the config file you need to modify to make cgi python scripts work
+Here is Lorsem `/etc/apache2/sites-enabled/000-default` , the config file you need to modify to make cgi python scripts work
 
 ```
 <VirtualHost *:80>
