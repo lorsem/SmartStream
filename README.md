@@ -140,3 +140,10 @@ Restart apache to have changes be effective:
 ```shell
 sudo service apache2 restart
 ```
+Now let's set permissions on files so that our python scrypts can modify them. 
+
+```shell
+sudo touch list_of_films.txt
+sudo chmod 777 list_of_films.txt
+sudo chmod 777 index.html
+```
