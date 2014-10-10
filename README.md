@@ -1,7 +1,7 @@
 SmartStream
 ===========
 
-Everything to setup a Streaming Server and WebInterface
+Setup a Streaming Server and WebInterface
 
 
 
@@ -26,10 +26,8 @@ Stub diagram:
                                                      +--&gt; Button to force the creation of an index
 </pre>
 
-
-### How it should work:
-When plugged in, the HD is searched for videos. An index is created without moving the files. From the index, users can stream videos from their computers in the browser or ask the server to start the output of a video through HDMI.
-The indexing will likely be implemented in a Python script, run on the server when needed. Files will be embedded in HTML5. Conversion won't be possible due to the RP's limited computing capabilities. HTML5 videos can be any format and will be played as long as the default player (e.g. QuickTime on Macs) supports the format. If the user chooses to play the film on HDMI, the RP should play the video through the HDMI port.
+### What is SmartStream
+Build your own video streaming server! SmartStream is an apache2 server that will stream your videos directly to your device. It is great when combined with a torrent machine
 
 ### Main page features
 On the main page it is possible to:
@@ -42,6 +40,10 @@ The index is always going to be updated to list ALL the movies. If needed indexi
 ### Specifications
 Supported video extensions: ('.wmv', '.mov', '.mpg', '.avi', '.mp4', '.mkv', 'm4v','.flv') [in indexer.py]
 
+### How it works:
+When plugged in, the HD is searched for videos. An index is created without moving the files. From the index, users can stream videos from their computers in the browser or ask the server to start the output of a video through HDMI.
+The indexing will likely be implemented in a Python script, run on the server when needed. Files will be embedded in HTML5. Conversion won't be possible due to the RP's limited computing capabilities. HTML5 videos can be any format and will be played as long as the default player (e.g. QuickTime on Macs) supports the format. If the user chooses to play the film on HDMI, the RP should play the video through the HDMI port.
+
 ### TODO
 * HDMI-output: maybe use something like os.system('/bin/vlc "MyVideo.mkv" ')
 * Manually organize data on HD -> rename, move, copy, upload, remove (kind of like DropBox)
@@ -53,15 +55,17 @@ to be a soft link to */media/HDD* and set Apache to follow symlinks. I left ever
 are permissions. It should be easy-peasy to recreate the same server at home.
 
 ### Complete guide for Raspberry pi
+This guide will help you to set up an apache2 server on your raspberry pi and to configure it to use SmartStream.
+
 First of all install apache2:
 
 ```shell
 sudo apt-get install apache2 -y
 ```
 
-Now copy all the stuff in `/var/www` (ovverride index.html)
+Copy your files in `/var/www` (ovverride index.html)
 
-Place the python scripts in `/var/www/cgi-bin` and make them executable
+Move all your python scripts python scripts in `/var/www/cgi-bin` and make them executable
 
 ```shell
 mkdir cgi-bin
@@ -70,13 +74,15 @@ cd cgi-bin
 chmod +x *py
 ```
 
-Create the directory "video" scanned by the indexer
+Create the directory "video", here is where you are going to put the video SmartStream will stream. You may want to create a soft symbolic link to your external HDD or to wherever you keep them
 
 ```shell
 mkdir /var/www/video
 ```
 
-Set apache2 to use the pythons scripts in cgi-bin: cd to `/etc/apache2/sites-enabled` and update `000-default` with this version (Loresem version)
+Set apache2 to use the pythons scripts in cgi-bin: you can copy Loresem config file:
+
+Here is Loresem `/etc/apache2/sites-enabled/000-default` , the config file you need to modify to make cgi python scripts work
 
 ```
 <VirtualHost *:80>
