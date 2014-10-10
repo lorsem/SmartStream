@@ -76,7 +76,7 @@ Create the directory "video" scanned by the indexer
 mkdir /var/www/video
 ```
 
-Set apache2 to use the pythons scripts in cgi-bin: cd to `/etc/apache2/sites-enabled` and update it with this version (Loresem version)
+Set apache2 to use the pythons scripts in cgi-bin: cd to `/etc/apache2/sites-enabled` and update `000-default` with this version (Loresem version)
 
 ```
 <VirtualHost *:80>
