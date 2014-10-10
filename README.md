@@ -87,6 +87,10 @@ sudo ln -s /media/SmartStream/video /var/www/video
 Set apache2 to use the pythons scripts in cgi-bin: you can copy Lorsem config file, or follow instructions at this link: http://bdhacker.wordpress.com/2011/05/21/running-your-first-cgi-program-with-apache2/
 
 Here is Lorsem `/etc/apache2/sites-enabled/000-default` , the config file you need to modify to make cgi python scripts work
+(First, stop Apache service:
+```shell
+sudo service apache2 stop
+```
 
 ```
 <VirtualHost *:80>
@@ -135,10 +139,10 @@ Here is Lorsem `/etc/apache2/sites-enabled/000-default` , the config file you ne
 	#BandWidth all 80000
 </VirtualHost>
 ```
-Restart apache to have changes be effective:
+Start apache to have changes be effective:
 
 ```shell
-sudo service apache2 restart
+sudo service apache2 start
 ```
 Now let's set permissions on files so that our python scrypts can modify them. 
 
