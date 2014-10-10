@@ -74,12 +74,16 @@ cd cgi-bin
 chmod +x *py
 ```
 
-Create the directory "video", here is where you are going to put the video SmartStream will stream. You may want to create a soft symbolic link to your external HDD or to wherever you keep them
+Create the directory "video", here is where you are going to put the video SmartStream will stream. You may want to create a soft symbolic link to your external HDD instead, or to wherever you keep them
 
 ```shell
 mkdir /var/www/video
 ```
+If you want to make the soft link  here is an example (from HDD)
 
+```shell
+sudo ln -s /media/SmartStream/video /var/www/video
+```
 Set apache2 to use the pythons scripts in cgi-bin: you can copy Loresem config file, or follow instructions at this link: http://bdhacker.wordpress.com/2011/05/21/running-your-first-cgi-program-with-apache2/
 
 Here is Loresem `/etc/apache2/sites-enabled/000-default` , the config file you need to modify to make cgi python scripts work
