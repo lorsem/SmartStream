@@ -76,6 +76,52 @@ Create the directory "video" scanned by the indexer
 mkdir /var/www/video
 ```
 
-Set apache2 to use the pythons scripts in cgi-bin
+Set apache2 to use the pythons scripts in cgi-bin: cd to `/etc/apache2/sites-enabled` and update it with this version (Loresem version)
 
-(.... to be continued)
+```
+<VirtualHost *:80>
+	ServerAdmin webmaster@localhost
+	DocumentRoot /var/www
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+	<Directory /var/www/>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+
+	ScriptAlias /cgi-bin/ /var/www/cgi-bin/
+	<Directory "/var/www/cgi-bin">
+		AllowOverride None
+		Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+		Order allow,deny
+		Allow from all
+		AddHandler cgi-script .py
+		AddHandler default-handler .html .htm
+	</Directory>
+
+	Alias /video/ "/var/www/video/"
+        <Directory "/var/www/video/?">
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                Allow from all
+        </Directory>
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+	#BANDWIDTH MGMT uses bw_module
+	#BandWidthModule On
+	#ForceBandWidthModule On
+	#BandWidth 192.168.0.0/24 0
+	#BandWidth all 80000
+</VirtualHost>
+```
