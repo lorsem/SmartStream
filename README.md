@@ -135,3 +135,8 @@ Here is Loresem `/etc/apache2/sites-enabled/000-default` , the config file you n
 	#BandWidth all 80000
 </VirtualHost>
 ```
+Restart apache to have changes be effective:
+
+```shell
+sudo service apache2 restart
+```
